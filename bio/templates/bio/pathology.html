@@ -1,0 +1,25 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Pathologies directory" %} - {{ pathology.name }}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+   <h1>{{ pathology.name }}</h1>
+   {% for illustration in pathology.illustrations.all %}
+   <img src="{{ illustration.image.url }}" height="100px"/>
+   {% endfor %}
+ </div>
+ 
+ <div id="info">
+  <p>{{ pathology.description }}</p>
+ 
+  <h2>{% trans "Symptom" %}</h2>
+  <p>{{ pathology.symptom }}</p>
+  <h2>{% trans "Treatment" %}</h2>
+  <p>{{ pathology.treatment }}</p>
+
+  <p><a href="{% url "pathologies" %}">{% trans "Go back to directory" %}</a></p>
+ </div>
+{% endblock bio_content %}
+

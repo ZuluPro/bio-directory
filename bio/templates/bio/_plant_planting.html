@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<h3>{% trans "Planting" %}</h3>
+{% if not plant.planting_description and user.is_staff %}
+ <p>{% trans "No provided description" %}, <a href="{{ plant.get_admin_url }}#id_planting_description"/>{% trans "Add it!" %}</a></p>
+{% elif not plant.planting_description %}
+ <p>{% trans "No provided description" %}.</p>
+{% else %}
+ <p>{{ plant.planting_description }}</p>
+{% endif %}
+
+<p>
+{% if plant.planting_start and plant.planting_end %}
+ {% blocktrans with start=plant.planting_start end=plant.planting_end %}
+ From {{ start }} to {{ end }}
+ {% endblocktrans %}
+{% elif plant.planting_start and not plant.planting_end %}
+ {% blocktrans with start=plant.planting_start %}
+ From {{ start }}
+ {% endblocktrans %}
+{% elif not plant.planting_start and plant.planting_end %}
+ {% blocktrans with end=plant.planting_end %}
+ Before {{ end }}
+ {% endblocktrans %}
+{% elif user.is_superuser %}
+ {% trans "No provided planting dates" %}, <a href="{{ plant.get_admin_url }}#id_planting_start"/>{% trans "Add it!" %}</a>
+{% else %}
+ {% trans "No provided planting dates" %}.
+{% endif %}
+</p>

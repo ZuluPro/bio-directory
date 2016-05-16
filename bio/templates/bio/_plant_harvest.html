@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<h3>{% trans "Harvest" %}</h3>
+{% if not plant.harvest_description and user.is_staff %}
+<p>{% trans "No provided description" %}, <a href="{{ plant.get_admin_url }}#id_harvest_description"/>{% trans "Add it!" %}</a></p>
+{% else %}
+<p>{{ plant.harvest_description }}</p>
+{% endif %}
+<p>
+{% if plant.harvest_start and plant.harvest_end %}
+ {% blocktrans with start=plant.harvest_start end=plant.harvest_end %}
+ From {{ start }} to {{ end }}
+ {% endblocktrans %}
+{% elif plant.harvest_start and not plant.harvest_end %}
+ {% blocktrans with start=plant.harvest_start %}
+ From {{ start }}
+ {% endblocktrans %}
+{% elif not plant.harvest_start and plant.harvest_end %}
+ {% blocktrans with end=plant.harvest_end %}
+ Before {{ end }}
+ {% endblocktrans %}
+{% elif user.is_superuser %}
+ {% trans "No provided harvest dates" %}, <a href="{{ plant.get_admin_url }}#id_harvest_start"/>{% trans "Add it!" %}</a>
+{% else %}
+ {% trans "No provided harvest dates" %}.
+{% endif %}
+</p>

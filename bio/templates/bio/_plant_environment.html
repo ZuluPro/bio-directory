@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<p>
+ {% if plant.temp_min and plant.temp_max %}
+  {% blocktrans with min=plant.temp_min max=plant.temp_max %}
+    From {{ min }} C° to {{ end }} C°
+  {% endblocktrans %}
+ {% elif plant.temp_min and not plant.temp_max %}
+  {% blocktrans with min=plant.temp_min %}
+    From {{ min }} C°
+  {% endblocktrans %}
+ {% elif not plant.temp_min and plant.temp_max %}
+  {% blocktrans with max=plant.temp_max %}
+    {{ max }} C° maximum
+  {% endblocktrans %}
+ {% elif user.is_superuser %}
+  {% trans "No provided temperatures" %}, <a href="{{ plant.get_admin_url }}#id_temp_min"/>{% trans "Add it!" %}</a>
+ {% else %}
+  {% trans "No provided temperatures" %}
+ {% endif %}
+</p>
+
+<p>
+ {% if plant.humidity_min and plant.humidity_max %}
+  {% blocktrans with min=plant.humidity_min max=plant.humidity_max %}
+   From {{ min }} φ to {{ end }} φ
+  {% endblocktrans %}
+ {% elif plant.temp_min and not plant.temp_max %}
+  {% blocktrans with min=plant.humidity_min max=plant.humidity_max %}
+   From {{ min }} φ
+  {% endblocktrans %}
+ {% elif not plant.temp_min and plant.temp_max %}
+  {% blocktrans with min=plant.humidity_min max=plant.humidity_max %}
+   {{ min }} φ maximum
+  {% endblocktrans %}
+ {% elif user.is_superuser %}
+  {% trans "No provided humidity value" %}, <a href="{{ plant.get_admin_url }}#id_humidity_min"/>{% trans "Add it!" %}</a>
+ {% else %}
+  {% trans "No provided humidity value" %}.
+ {% endif %}
+</p>

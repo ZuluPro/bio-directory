@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<h3>{% trans "Pathologies" %}</h3>
+{% if plant.pathologies.exists %}
+ <ul>
+ {% for pathology in plant.pathologies.all %}
+  <li><a href="{{ pathology.get_absolute_url }}">{{ pathology }}</a></li>
+ {% endfor %}
+ </ul>
+{% elif user.is_superuser %}
+ <p>{% trans "No provided pathology" %}, <a href="{{ plant.get_admin_url }}#id_pathologies"/>{% trans "Add it!" %}</a></p>
+{% else %}
+ <p>{% trans "No provided pathology" %}.</p>
+{% endif %}

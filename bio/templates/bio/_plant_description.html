@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<p>
+ {% if not plant.description and user.is_superuser %}
+  {% trans "No provided description" %}, <a href="{{ plant.get_admin_url }}#id_description"/>{% trans "Add it!" %}</a></p>
+ {% elif not plant.description %}
+  {% trans "No provided description" %}.
+ {% else %}
+  {{ plant.description }}
+ {% endif %}
+</p>

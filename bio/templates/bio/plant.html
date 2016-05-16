@@ -1,0 +1,46 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Plants directory" %} - {{ plant.name }}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+   <h1>{{ plant.name }}</h1>
+   {% for image in plant.images.all %}
+    <img src="{{ image.image.url }}" height="100px"/>
+   {% empty %}
+    {% if user.is_superuser %}
+     <p>{% trans "No illustration" %} <a href="{{ plant.get_admin_url }}#id_images">{% trans "Add it!" %}</a></p>
+    {% else %}
+     <p>{% trans "No illustration" %}</p>
+    {% endif %}
+   {% endfor %}
+ </div>
+ 
+ <div id="info">
+  {% include "bio/_plant_description.html" %}
+  <br>
+
+  <h2>{% trans "Cultivation" %}</h2>
+  {% include "bio/_plant_planting.html" %}
+  {% include "bio/_plant_harvest.html" %}
+  <br>
+ 
+  <h2>{% trans "Environment" %}</h2>
+  {% include "bio/_plant_environment.html" %}
+  {% include "bio/_plant_affinity.html" %}
+  <br>
+
+  <p>{% trans "Is heliophilous:" %} {{ plant.heliophilous }}</p>
+  <p>{% trans "Is toxic:" %} {{ plant.heliophilous }}</p>
+  <p>{% trans "Is food:" %} {{ plant.heliophilous }}</p>
+  <br>
+ 
+  <h2>{% trans "Diseases" %}</h2>
+  {% include "bio/_plant_pathology.html" %}
+  {% include "bio/_plant_pest.html" %}
+  <br>
+
+  <p><a href="{% url "plants" %}">{% trans "Go back to directory" %}</a></p>
+ </div>
+{% endblock bio_content %}
