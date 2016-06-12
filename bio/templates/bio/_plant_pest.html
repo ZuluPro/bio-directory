@@ -2,11 +2,11 @@
 
 <h3>{% trans "Pests" %}</h3>
 {% if plant.pests.exists %}
-<ul>
-{% for pest in plant.pests.all %}
- <li><a href="{{ pest.get_absolute_url }}">{{ pest }}</a></li>
-{% endfor %}
-</ul>
+ <ul>
+ {% for pest in plant.pests.all %}
+  <li><a href="{{ pest.get_absolute_url }}">{{ pest }}</a></li>
+ {% endfor %}
+ </ul>
 {% elif user.is_superuser %}
  <p>{% trans "No provided pest" %}, <a href="{{ plant.get_admin_url }}#id_pests"/>{% trans "Add it!" %}</a></p>
 {% else %}

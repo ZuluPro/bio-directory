@@ -12,7 +12,7 @@ class PlantAdmin(admin.ModelAdmin):
             'fields': (
                 ('name', 'latin_name'),
                 'description',
-                'images',
+                ('illustration', 'images'),
                 ('food', 'toxic')
             )
         }),
@@ -26,9 +26,10 @@ class PlantAdmin(admin.ModelAdmin):
         }),
         (_('Environment'), {
             'fields': (
-                ('like', 'dislike'),
+                'environment_description',
                 ('temp_min', 'temp_max'),
                 ('humidity_min', 'humidity_max'),
+                ('like', 'dislike'),
                 'heliophilous',
             )
         }),
@@ -40,10 +41,10 @@ class PlantAdmin(admin.ModelAdmin):
     )
 
     def get_image(self, obj):
-        if not obj.images.exists():
+        if not obj.illustration:
             return ''
         return '<a href="{url}" target="_blank"><img src="{url}" height="100px"/></a>'.format(
-            url=obj.images.first().image.url)
+            url=obj.illustration.image.url)
     get_image.short_description = 'Illustration'
     get_image.allow_tags = True
 
@@ -55,14 +56,15 @@ class PathologyAdmin(admin.ModelAdmin):
             'fields': (
                 ('name', 'latin_name'),
                 'description',
-                ('symptom', 'illustrations'),
+                ('illustration', 'images'),
+                'symptom',
                 'treatment',
             )
         }),
     )
 
     def get_image(self, obj):
-        if not obj.illustrations.exists():
+        if not obj.illustration:
             return ''
         return '<a href="{url}" target="_blank"><img src="{url}" height="100px"/></a>'.format(
             url=obj.images.first().image.url)
@@ -77,14 +79,15 @@ class PestAdmin(admin.ModelAdmin):
             'fields': (
                 ('name', 'latin_name'),
                 'description',
-                ('symptom', 'illustrations'),
+                ('illustration', 'images'),
+                'symptom',
                 'treatment',
             )
         }),
     )
 
     def get_image(self, obj):
-        if not obj.illustrations.exists():
+        if not obj.illustration:
             return ''
         return '<a href="{url}" target="_blank"><img src="{url}" height="100px"/></a>'.format(
             url=obj.images.first().image.url)

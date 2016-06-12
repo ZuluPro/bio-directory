@@ -1,6 +1,16 @@
 {% load i18n %}
 
 <p>
+ {% if plant.environment_description %}
+  {{ plant.environment_description }}
+ {% elif user.is_superuser %}
+  {% trans "No provided environment description" %}, <a href="{{ plant.get_admin_url }}#id_environment_description"/>{% trans "Add it!" %}</a>
+ {% else %}
+  {% trans "No provided environment description" %}
+ {% endif %}
+</p>
+
+<p>
  {% if plant.temp_min and plant.temp_max %}
   {% blocktrans with min=plant.temp_min max=plant.temp_max %}
     From {{ min }} C° to {{ end }} C°

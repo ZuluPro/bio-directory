@@ -4,9 +4,25 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 
+MONTHS = (
+    (1, _('January')),
+    (2, _('Febuary')),
+    (3, _('March')),
+    (4, _('April')),
+    (5, _('May')),
+    (6, _('June')),
+    (7, _('July')),
+    (8, _('August')),
+    (9, _('September')),
+    (10, _('October')),
+    (11, _('November')),
+    (12, _('December')),
+)
+
+
 @python_2_unicode_compatible
 class Image(models.Model):
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     title = models.CharField(max_length=100)
     image = models.ImageField()
 
@@ -28,9 +44,10 @@ class Pathology(models.Model):
     latin_name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=2000, blank=True, null=True)
 
-    symptom = models.TextField(max_length=300, blank=True, null=True)
-    illustrations = models.ManyToManyField(Image, blank=True)
+    illustration = models.ForeignKey(Image, blank=True, null=True, related_name='pathology_illustrations')
+    images = models.ManyToManyField(Image, blank=True)
 
+    symptom = models.TextField(max_length=300, blank=True, null=True)
     treatment = models.TextField(max_length=5000, blank=True)
 
     class Meta:
@@ -44,6 +61,12 @@ class Pathology(models.Model):
     def get_absolute_url(self):
         return reverse('pathology', args=(self.id,))
 
+    def get_admin_url(self):
+        return reverse('admin:bio_pathology_change', args=(self.id,))
+
+    def get_illustration_url(self):
+        return self.illustration.image.url
+
 
 @python_2_unicode_compatible
 class Pest(models.Model):
@@ -51,9 +74,11 @@ class Pest(models.Model):
     latin_name = models.CharField(max_length=100, blank=True, null=True)
 
     description = models.TextField(max_length=2000, blank=True, null=True)
-    symptom = models.TextField(max_length=300, blank=True, null=True)
-    illustrations = models.ManyToManyField(Image, blank=True)
 
+    illustration = models.ForeignKey(Image, blank=True, null=True, related_name='pest_illustrations')
+    images = models.ManyToManyField(Image, blank=True)
+
+    symptom = models.TextField(max_length=300, blank=True, null=True)
     treatment = models.TextField(max_length=5000, blank=True)
 
     class Meta:
@@ -66,6 +91,12 @@ class Pest(models.Model):
 
     def get_absolute_url(self):
         return reverse('pest', args=(self.id,))
+
+    def get_admin_url(self):
+        return reverse('admin:bio_pest_change', args=(self.id,))
+
+    def get_illustration_url(self):
+        return self.illustration.image.url
 # 
 # 
 # @python_2_unicode_compatible
@@ -118,21 +149,30 @@ class Plant(models.Model):
     latin_name = models.CharField(max_length=100, blank=True, null=True)
     # genus = models.ForeignKey(Genus, null=True)
     description = models.TextField(blank=True)
+    illustration = models.ForeignKey(Image, blank=True, null=True, related_name='plant_illustrations')
     images = models.ManyToManyField(Image, blank=True)
 
     pathologies = models.ManyToManyField('Pathology', blank=True)
     pests = models.ManyToManyField('Pest', blank=True)
 
     planting_description = models.TextField(blank=True, null=True)
-    planting_start = models.DateField(blank=True, null=True)
-    planting_end = models.DateField(blank=True, null=True)
+    planting_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    planting_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+
+    growth_description = models.TextField(blank=True, null=True)
+    growth_period = models.SmallIntegerField(blank=True, null=True)
+
+    blossom_description = models.TextField(blank=True, null=True)
+    blossom_period = models.SmallIntegerField(blank=True, null=True)
 
     harvest_description = models.TextField(blank=True, null=True)
-    harvest_start = models.DateField(blank=True, null=True)
-    harvest_end = models.DateField(blank=True, null=True)
+    harvest_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    harvest_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
 
     like = models.ManyToManyField('self', blank=True)
     dislike = models.ManyToManyField('self', blank=True)
+
+    environment_description = models.TextField(blank=True, null=True)
     temp_min = models.SmallIntegerField(blank=True, null=True)
     temp_max = models.SmallIntegerField(blank=True, null=True)
     humidity_min = models.SmallIntegerField(blank=True, null=True)
@@ -155,3 +195,6 @@ class Plant(models.Model):
 
     def get_admin_url(self):
         return reverse('admin:bio_plant_change', args=(self.id,))
+
+    def get_illustration_url(self):
+        return self.illustration.image.url
