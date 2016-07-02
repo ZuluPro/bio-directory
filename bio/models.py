@@ -19,6 +19,18 @@ MONTHS = (
     (12, _('December')),
 )
 
+LIFECYCLES = (
+    ('perennial', _('Perennial')),
+    ('annual', _('Annual')),
+    ('biennials', _('Biennials')),
+)
+
+EXPOSITIONS = (
+    ('full_sunlight', _('full sunlight')),
+    ('partial shade', _('partial shade')),
+    ('shade', _('shade')),
+)
+
 
 @python_2_unicode_compatible
 class Image(models.Model):
@@ -147,6 +159,7 @@ class Pest(models.Model):
 class Plant(models.Model):
     name = models.CharField(max_length=50)
     latin_name = models.CharField(max_length=100, blank=True, null=True)
+    variety = models.CharField(max_length=50, blank=True, null=True)
     # genus = models.ForeignKey(Genus, null=True)
     description = models.TextField(blank=True)
     illustration = models.ForeignKey(Image, blank=True, null=True, related_name='plant_illustrations')
@@ -155,15 +168,24 @@ class Plant(models.Model):
     pathologies = models.ManyToManyField('Pathology', blank=True)
     pests = models.ManyToManyField('Pest', blank=True)
 
+    lifecycle = models.CharField(choices=LIFECYCLES, max_length=20, blank=True, null=True)
+
+    seedling_description = models.TextField(blank=True, null=True)
+    seedling_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    seedling_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    germination_period = models.SmallIntegerField(blank=True, null=True)
+
     planting_description = models.TextField(blank=True, null=True)
     planting_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
     planting_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
 
-    growth_description = models.TextField(blank=True, null=True)
     growth_period = models.SmallIntegerField(blank=True, null=True)
+    growth_description = models.TextField(blank=True, null=True)
+    growth_maintenance = models.TextField(blank=True, null=True)
 
-    blossom_description = models.TextField(blank=True, null=True)
     blossom_period = models.SmallIntegerField(blank=True, null=True)
+    blossom_description = models.TextField(blank=True, null=True)
+    blossom_maintenance = models.TextField(blank=True, null=True)
 
     harvest_description = models.TextField(blank=True, null=True)
     harvest_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
@@ -174,10 +196,24 @@ class Plant(models.Model):
 
     environment_description = models.TextField(blank=True, null=True)
     temp_min = models.SmallIntegerField(blank=True, null=True)
+    temp_optimal_day = models.SmallIntegerField(blank=True, null=True)
+    temp_optimal_night = models.SmallIntegerField(blank=True, null=True)
     temp_max = models.SmallIntegerField(blank=True, null=True)
     humidity_min = models.SmallIntegerField(blank=True, null=True)
     humidity_max = models.SmallIntegerField(blank=True, null=True)
-    heliophilous = models.NullBooleanField()
+
+    exposition = models.CharField(choices=EXPOSITIONS, max_length=15, blank=True, null=True)
+    exposition_time = models.SmallIntegerField(blank=True, null=True)
+
+    ph_min = models.SmallIntegerField(blank=True, null=True)
+    ph_max = models.SmallIntegerField(blank=True, null=True)
+
+    nitrogen = models.SmallIntegerField(blank=True, null=True)
+    phosphorus = models.SmallIntegerField(blank=True, null=True)
+    potassium = models.SmallIntegerField(blank=True, null=True)
+
+    before = models.ManyToManyField('self', blank=True)
+    after = models.ManyToManyField('self', blank=True)
 
     food = models.BooleanField()
     toxic = models.BooleanField()

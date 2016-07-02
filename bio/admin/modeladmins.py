@@ -1,25 +1,36 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from bio import models
+from bio.admin import forms
 
 
 class PlantAdmin(admin.ModelAdmin):
     list_display = ('name', 'get_image')
-    list_filters = ('planting_start', 'harvest_start', 'food', 'toxic',
-                    'heliophilous')
+    list_filters = ('planting_start', 'harvest_start', 'food', 'toxic')
+    form = forms.PlantForm
     fieldsets = (
         (_('Informations'), {
             'fields': (
-                ('name', 'latin_name'),
+                ('name', 'latin_name', 'variety'),
                 'description',
+                'lifecycle',
                 ('illustration', 'images'),
                 ('food', 'toxic')
             )
         }),
         (_('Cultivation'), {
             'fields': (
+                ('seedling_start', 'seedling_end'),
+                'seedling_description',
+                'germination_period',
+
                 ('planting_start', 'planting_end'),
                 'planting_description',
+
+                'growth_period',
+                ('growth_description', 'growth_maintenance'),
+
+                'blossom_period',
+                ('blossom_description', 'blossom_maintenance'),
                 ('harvest_start', 'harvest_end'),
                 'harvest_description',
             )
@@ -27,10 +38,13 @@ class PlantAdmin(admin.ModelAdmin):
         (_('Environment'), {
             'fields': (
                 'environment_description',
-                ('temp_min', 'temp_max'),
+                ('temp_min', 'temp_optimal_night', 'temp_optimal_day', 'temp_max'),
+                ('exposition', 'exposition_time'),
                 ('humidity_min', 'humidity_max'),
+                ('ph_min', 'ph_max'),
+                ('nitrogen', 'phosphorus', 'potassium'),
                 ('like', 'dislike'),
-                'heliophilous',
+                ('before', 'after'),
             )
         }),
         (_('Diseases'), {
@@ -93,12 +107,3 @@ class PestAdmin(admin.ModelAdmin):
             url=obj.images.first().image.url)
     get_image.short_description = 'Illustration'
     get_image.allow_tags = True
-
-
-# admin.site.register(models.Order)
-# admin.site.register(models.Family)
-# admin.site.register(models.Genus)
-admin.site.register(models.Plant, PlantAdmin)
-admin.site.register(models.Pathology)
-admin.site.register(models.Pest)
-admin.site.register(models.Image)
