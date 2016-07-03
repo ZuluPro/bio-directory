@@ -8,10 +8,8 @@
 </li><a href="{{ plant_like.get_absolute_url }}">{{ plant_like }}</a></li>
 {% endfor %}
 </ul>
-{% elif user.is_superuser %}
-<p>{% trans "No provided affinity" %}, <a href="{{ plant.get_admin_url }}#id_like"/>{% trans "Add it!" %}</a></p>
 {% else %}
-<p>{% trans "No provided affinity" %}.</p>
+ <p>{% trans "No provided affinity" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_like"/>{% trans "Add it!" %}</a>{% endif %}</p>
 {% endif %}
 
 <h4>{% trans "Dislike" %}</h4>
@@ -21,8 +19,6 @@
 <li><a href="{{ plant_dislike.get_absolute_url }}">{{ plant_dislike }}</a></li>
 {% endfor %}
 </ul>
-{% elif user.is_superuser %}
-<p>{% trans "No provided affinity" %}, <a href="{{ plant.get_admin_url }}#id_like"/>{% trans "Add it!" %}</a></p>
 {% else %}
-<p>{% trans "No provided affinity" %}.</p>
+ <p>{% trans "No provided affinity" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_dislike"/>{% trans "Add it!" %}</a>{% endif %}</p>
 {% endif %}

@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -157,73 +158,78 @@ class Pest(models.Model):
 
 @python_2_unicode_compatible
 class Plant(models.Model):
-    name = models.CharField(max_length=50)
-    latin_name = models.CharField(max_length=100, blank=True, null=True)
-    variety = models.CharField(max_length=50, blank=True, null=True)
+    name = models.CharField(max_length=50, help_text=_("Common name, example: tomato."), verbose_name=_("name"))
+    latin_name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('latin name'))
+    variety = models.CharField(max_length=50, blank=True, null=True, verbose_name=_('variety'))
     # genus = models.ForeignKey(Genus, null=True)
-    description = models.TextField(blank=True)
-    illustration = models.ForeignKey(Image, blank=True, null=True, related_name='plant_illustrations')
-    images = models.ManyToManyField(Image, blank=True)
+    description = models.TextField(blank=True, help_text=_("How is the plant."), verbose_name=_("description"))
+    illustration = models.ForeignKey(Image, blank=True, null=True, related_name='plant_illustrations', help_text=_("Image showed for illustrate the plant."), verbose_name=_("illustration"))
+    images = models.ManyToManyField(Image, blank=True, help_text=_("Gallery of images representing the plant."), verbose_name=_("images"))
 
-    pathologies = models.ManyToManyField('Pathology', blank=True)
-    pests = models.ManyToManyField('Pest', blank=True)
+    pathologies = models.ManyToManyField('Pathology', blank=True, help_text=_("Disease affecting the plant."), verbose_name=_("pathologies"))
+    pests = models.ManyToManyField('Pest', blank=True, help_text=_("Organisms that cause nuisance and epidemic disease."), verbose_name=_("pests"))
 
-    lifecycle = models.CharField(choices=LIFECYCLES, max_length=20, blank=True, null=True)
+    lifecycle = models.CharField(choices=LIFECYCLES, max_length=20, blank=True, null=True, verbose_name=_("lifecycle"))
 
-    seedling_description = models.TextField(blank=True, null=True)
-    seedling_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
-    seedling_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
-    germination_period = models.SmallIntegerField(blank=True, null=True)
+    seedling_description = models.TextField(blank=True, null=True, help_text=_("How to seed."), verbose_name=_("seedling description"))
+    seedling_start = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When start to seed."), verbose_name=_("seedling start month"))
+    seedling_end = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When end to seed."), verbose_name=("seedling end month"))
+    germination_period = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In days."), verbose_name=_("germination time"))
 
-    planting_description = models.TextField(blank=True, null=True)
-    planting_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
-    planting_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    planting_description = models.TextField(blank=True, null=True, help_text=_("How to plant."), verbose_name=_("planting description"))
+    planting_start = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When start to plant."), verbose_name=_("planting start month"))
+    planting_end = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When end to plant."), verbose_name=_("planting end month"))
 
-    growth_period = models.SmallIntegerField(blank=True, null=True)
-    growth_description = models.TextField(blank=True, null=True)
-    growth_maintenance = models.TextField(blank=True, null=True)
+    growth_period = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In days."), verbose_name=_("growth time"))
+    growth_description = models.TextField(blank=True, null=True, help_text=_("How plant growths."), verbose_name=_("growth description"))
+    growth_maintenance = models.TextField(blank=True, null=True, help_text=_("How to take care."), verbose_name=_("growth maintenance"))
 
-    blossom_period = models.SmallIntegerField(blank=True, null=True)
-    blossom_description = models.TextField(blank=True, null=True)
-    blossom_maintenance = models.TextField(blank=True, null=True)
+    blossom_period = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In days."), verbose_name=_("blossom time"))
+    blossom_description = models.TextField(blank=True, null=True, help_text=_("How plant flower."), verbose_name=_("blossom description"))
+    blossom_maintenance = models.TextField(blank=True, null=True, help_text=_("How take care of blossom."), verbose_name=_("blossom maintenance"))
 
-    harvest_description = models.TextField(blank=True, null=True)
-    harvest_start = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
-    harvest_end = models.SmallIntegerField(choices=MONTHS, blank=True, null=True)
+    harvest_description = models.TextField(blank=True, null=True, help_text=_("How to harvest."), verbose_name=_("harvest description"))
+    harvest_start = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When start harvest."), verbose_name=_("harvest start month"))
+    harvest_end = models.PositiveSmallIntegerField(choices=MONTHS, blank=True, null=True, help_text=_("When end harvest."), verbose_name=_("harvest end month"))
 
-    like = models.ManyToManyField('self', blank=True)
-    dislike = models.ManyToManyField('self', blank=True)
+    like = models.ManyToManyField('self', blank=True, help_text=_("Plants with beneficial association"), verbose_name=_("good with"))
+    dislike = models.ManyToManyField('self', blank=True, help_text=_("Plants with bad association"), verbose_name=_("bad with"))
 
-    environment_description = models.TextField(blank=True, null=True)
-    temp_min = models.SmallIntegerField(blank=True, null=True)
-    temp_optimal_day = models.SmallIntegerField(blank=True, null=True)
-    temp_optimal_night = models.SmallIntegerField(blank=True, null=True)
-    temp_max = models.SmallIntegerField(blank=True, null=True)
-    humidity_min = models.SmallIntegerField(blank=True, null=True)
-    humidity_max = models.SmallIntegerField(blank=True, null=True)
+    environment_description = models.TextField(blank=True, null=True, help_text=_("What is the best environment."), verbose_name=_("environment description"))
+    temp_min = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("minimum temperature"))
+    temp_optimal_day = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal day temperature"))
+    temp_optimal_night = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal ngiht temperature"))
+    temp_max = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("maximum temperature"))
+    humidity_min = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("minimum humidity"))
+    humidity_max = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("maximum humidity"))
 
-    exposition = models.CharField(choices=EXPOSITIONS, max_length=15, blank=True, null=True)
-    exposition_time = models.SmallIntegerField(blank=True, null=True)
+    exposition = models.CharField(choices=EXPOSITIONS, max_length=15, blank=True, null=True, verbose_name=_("exposition"))
+    exposition_time = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In hours"), verbose_name=_("exposition time"))
 
-    ph_min = models.SmallIntegerField(blank=True, null=True)
-    ph_max = models.SmallIntegerField(blank=True, null=True)
+    ph_min = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_("minimum PH"))
+    ph_max = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_("maximum PH"))
 
-    nitrogen = models.SmallIntegerField(blank=True, null=True)
-    phosphorus = models.SmallIntegerField(blank=True, null=True)
-    potassium = models.SmallIntegerField(blank=True, null=True)
+    nitrogen = models.PositiveSmallIntegerField(blank=True, null=True)
+    phosphorus = models.PositiveSmallIntegerField(blank=True, null=True)
+    potassium = models.PositiveSmallIntegerField(blank=True, null=True)
 
-    before = models.ManyToManyField('self', blank=True)
-    after = models.ManyToManyField('self', blank=True)
+    before = models.ManyToManyField('self', blank=True, help_text=_("What to plant before this plant."), verbose_name=_("plant before"))
+    after = models.ManyToManyField('self', blank=True, help_text=_("What to plant after this plant"), verbose_name=_("plant after"))
 
-    food = models.BooleanField()
-    toxic = models.BooleanField()
+    food = models.BooleanField(verbose_name=_("is food"))
+    toxic = models.BooleanField(verbose_name=_("is toxic"))
 
     class Meta:
         app_label = 'bio'
         verbose_name = _('plant')
         verbose_name_plural = _('plants')
+        unique_together = ('name', 'variety')
 
     def __str__(self):
+        if self.latin_name and self.variety:
+            return "%s (%s) %s" % (self.name, self.latin_name, self.variety)
+        elif self.latin_name:
+            return "%s (%s)" % (self.name, self.latin_name)
         return self.name
 
     def get_absolute_url(self):

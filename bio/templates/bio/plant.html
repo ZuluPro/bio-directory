@@ -1,19 +1,15 @@
 {% extends "bio/base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Plants directory" %} - {{ plant.name }}{% endblock title %}
+{% block title %}{% trans "Plants directory" %} - {{ plant }}{% endblock title %}
 
 {% block bio_content %}
  <div id="summary">
-   <h1>{{ plant.name }}</h1>
+   <h1>{{ plant }}</h1>
    {% for image in plant.images.all %}
     <img src="{{ image.image.url }}" height="100px"/>
    {% empty %}
-    {% if user.is_superuser %}
-     <p>{% trans "No illustration" %} <a href="{{ plant.get_admin_url }}#id_images">{% trans "Add it!" %}</a></p>
-    {% else %}
-     <p>{% trans "No illustration" %}</p>
-    {% endif %}
+   <p>{% trans "No illustration" %} {% if user.is_superuser %}<a href="{{ plant.get_admin_url }}#id_images">{% trans "Add it!" %}</a>{% endif %}</p>
    {% endfor %}
  </div>
  
@@ -22,18 +18,24 @@
   <br>
 
   <h2>{% trans "Cultivation" %}</h2>
+  {% include "bio/_plant_seedling.html" %}
   {% include "bio/_plant_planting.html" %}
+  {% include "bio/_plant_growth.html" %}
+  {% include "bio/_plant_blossom.html" %}
   {% include "bio/_plant_harvest.html" %}
   <br>
  
   <h2>{% trans "Environment" %}</h2>
   {% include "bio/_plant_environment.html" %}
+  <br>
   {% include "bio/_plant_affinity.html" %}
   <br>
+  {% include "bio/_plant_rotation.html" %}
+  <br>
 
-  <p>{% trans "Is heliophilous:" %} {{ plant.heliophilous }}</p>
-  <p>{% trans "Is toxic:" %} {{ plant.toxic }}</p>
-  <p>{% trans "Is food:" %} {{ plant.food }}</p>
+
+  <p><b>{% trans "Is toxic:" %}</b> {{ plant.toxic }}</p>
+  <p><b>{% trans "Is food:" %}</b> {{ plant.food }}</p>
   <br>
  
   <h2>{% trans "Diseases" %}</h2>

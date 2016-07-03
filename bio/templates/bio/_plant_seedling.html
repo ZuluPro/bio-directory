@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<h3>{% trans "Seedling" %}</h3>
+
+<p>
+ {% if not plant.seedling_description %}
+  {% trans "No provided description" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_seedling_description"/>{% trans "Add it!" %}</a>{% endif %}
+ {% else %}
+  {{ plant.seedling_description }}
+ {% endif %}
+</p>
+
+<p>
+{% if plant.germination_period %}
+ {% blocktrans count days=plant.germination_period %}
+  {{ days }} day
+ {% plural %}
+  {{ days }} days
+ {% endblocktrans %}
+{% else %}
+ {% trans "No provided germination time" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_germination_period"/>{% trans "Add it!" %}</a>{% endif %}
+{% endif %}
+</p>
+
+<p>
+{% if plant.get_seedling_start_display and plant.get_seedling_end_display %}
+ {% blocktrans with start=plant.get_seedling_start_display end=plant.get_seedling_end_display %}
+ From {{ start }} to {{ end }}
+ {% endblocktrans %}
+{% elif plant.get_seedling_start_display and not plant.get_seedling_end_display %}
+ {% blocktrans with start=plant.get_seedling_start_display %}
+ From {{ start }}
+ {% endblocktrans %}
+{% elif not plant.get_seedling_start_display and plant.get_seedling_end_display %}
+ {% blocktrans with end=plant.get_seedling_end_display %}
+ Before {{ end }}
+ {% endblocktrans %}
+{% else %}
+ {% trans "No provided seedling dates" %} {% if user.is_staff %}<a href="{{ plant.get_admin_url }}#id_seedling_start"/>{% trans "Add it!" %}</a>{% endif %}
+{% endif %}
+</p>

@@ -3,14 +3,44 @@
 <p>
  {% if plant.environment_description %}
   {{ plant.environment_description }}
- {% elif user.is_superuser %}
-  {% trans "No provided environment description" %}, <a href="{{ plant.get_admin_url }}#id_environment_description"/>{% trans "Add it!" %}</a>
  {% else %}
-  {% trans "No provided environment description" %}
+  {% trans "No provided environment description" %}, {% if user.is_staff %}<a href="{{ plant.get_admin_url }}#id_environment_description"/>{% trans "Add it!" %}</a>{% endif %}
  {% endif %}
 </p>
 
 <p>
+ <b>{% trans "Exposition:" %}</b>
+ {% if plant.exposition and plant.exposition_time %}
+  {% blocktrans with exposition=plant.get_exposition_display exposition_time=plant.exposition_time %}{{ exposition }} during {{ exposition_time }} hours{% endblocktrans %}
+ {% elif plant.exposition %}
+  {% blocktrans with exposition=plant.get_exposition_display %}{{ exposition }}{% endblocktrans %}
+ {% elif plant.exposition_time %}
+  {% blocktrans with exposition_time=plant.exposition_time %}During {{ exposition_time }} hours{% endblocktrans %}
+ {% else %}
+ {% trans "No exposition provided" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_exposition"/>{% trans "Add it!" %}</a>{% endif %}
+ {% endif %}
+</p>
+
+<p>
+ <b>{% trans "Optimal temperatures:" %}</b>
+ {% if plant.temp_optimal_day %}
+  {% blocktrans with temperature=plant.temp_optimal_day %}
+   {{ plant.temp_optimal_day }} °C in day
+  {% endblocktrans %}
+ {% else %}
+  {% trans "No provided day temperature" %}, {% if user.is_staff %}<a href="{{ plant.get_admin_url }}#id_temp_optimal_day"/>{% trans "Add it!" %}</a>{% endif %}
+ {% endif %}
+ {% if plant.temp_optimal_night %}
+  {% blocktrans with temperature=plant.temp_optimal_night %}
+   {{ plant.temp_optimal_night }} °C in night
+  {% endblocktrans %}
+ {% else %}
+  {% trans "No provided night temperature" %}, {% if user.is_staff %}<a href="{{ plant.get_admin_url }}#id_temp_optimal_night"/>{% trans "Add it!" %}</a>{% endif %}
+ {% endif %}
+</p>
+
+<p>
+ <b>{% trans "Supported temperatures:" %}</b>
  {% if plant.temp_min and plant.temp_max %}
   {% blocktrans with min=plant.temp_min max=plant.temp_max %}
     From {{ min }} C° to {{ end }} C°
@@ -31,6 +61,7 @@
 </p>
 
 <p>
+ <b>{% trans "Humidity:" %}</b>
  {% if plant.humidity_min and plant.humidity_max %}
   {% blocktrans with min=plant.humidity_min max=plant.humidity_max %}
    From {{ min }} φ to {{ end }} φ
@@ -43,9 +74,37 @@
   {% blocktrans with min=plant.humidity_min max=plant.humidity_max %}
    {{ min }} φ maximum
   {% endblocktrans %}
- {% elif user.is_superuser %}
+ {% elif user.is_staff %}
   {% trans "No provided humidity value" %}, <a href="{{ plant.get_admin_url }}#id_humidity_min"/>{% trans "Add it!" %}</a>
  {% else %}
   {% trans "No provided humidity value" %}.
  {% endif %}
 </p>
+
+<p>
+ <b>{% trans "PH:" %}</b>
+ {% if plant.ph_min and plant.ph_max %}
+  {% blocktrans with min=plant.ph_min max=plant.ph_max %}
+   From {{ min }} φ to {{ end }} φ
+  {% endblocktrans %}
+ {% elif plant.temp_min and not plant.temp_max %}
+  {% blocktrans with min=plant.ph_min max=plant.ph_max %}
+   From {{ min }} φ
+  {% endblocktrans %}
+ {% elif not plant.temp_min and plant.temp_max %}
+  {% blocktrans with min=plant.ph_min max=plant.ph_max %}
+   {{ min }} φ maximum
+  {% endblocktrans %}
+ {% elif user.is_staff %}
+  {% trans "No provided PH value" %}, <a href="{{ plant.get_admin_url }}#id_ph_min"/>{% trans "Add it!" %}</a>
+ {% else %}
+  {% trans "No provided PH value" %}.
+ {% endif %}
+</p>
+
+{% if plant.nitrogen and plant.phosphorus and plant.potassium %}
+<p>
+ <b>{% trans "Ideal fertilizer (NPK):" %}</b>
+  {{ plant.nitrogen }} - {{ plant.phosphorus }} - {{ plant.potassium }}
+</p>
+{% endif %}

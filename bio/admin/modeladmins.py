@@ -44,7 +44,7 @@ class PlantAdmin(admin.ModelAdmin):
                 ('ph_min', 'ph_max'),
                 ('nitrogen', 'phosphorus', 'potassium'),
                 ('like', 'dislike'),
-                ('before', 'after'),
+                ('after', 'before'),
             )
         }),
         (_('Diseases'), {

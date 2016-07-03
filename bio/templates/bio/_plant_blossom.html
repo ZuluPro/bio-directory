@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<h3>{% trans "Blossom" %}</h3>
+<p>
+{% if plant.blossom_period %}
+ {% blocktrans count days=plant.blossom_period %}
+  {{ days }} day
+ {% plural %}
+  {{ days }} days
+ {% endblocktrans %}
+{% else %}
+ {% trans "No provided blossom time" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_blossom_period"/>{% trans "Add it!" %}</a>{% endif %}
+{% endif %}
+</p>
+
+<p>
+ {% if not plant.blossom_description %}
+  {% trans "No provided description" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_blossom_description"/>{% trans "Add it!" %}</a>{% endif %}
+ {% else %}
+  {{ plant.blossom_description }}
+ {% endif %}
+</p>
+
+<p>
+ {% if not plant.blossom_maintenance %}
+  {% trans "No provided maintenance" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_blossom_maintenance"/>{% trans "Add it!" %}</a>{% endif %}
+ {% else %}
+  {{ plant.blossom_maintenance }}
+ {% endif %}
+</p>

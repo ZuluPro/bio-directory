@@ -1,10 +1,17 @@
 {% load i18n %}
 
 <p>
- {% if not plant.description and user.is_superuser %}
-  {% trans "No provided description" %}, <a href="{{ plant.get_admin_url }}#id_description"/>{% trans "Add it!" %}</a></p>
- {% elif not plant.description %}
-  {% trans "No provided description" %}.
+ <b>{% trans "Lifecycle:" %}</b> 
+ {% if plant.lifecycle %}
+  {{ plant.lifecycle }}
+ {% else %}
+ {% trans "No provided lifecycle" %}{% if user.is_superuser %}, <a href="{{ plant.get_admin_url }}#id_lifecycle"/>{% trans "Add it!" %}</a>{% endif %}
+ {% endif %}
+</p>
+
+<p>
+ {% if not plant.description %}
+  {% trans "No provided description" %}{% if user.is_superuser %}, <a href="{{ plant.get_admin_url }}#id_description"/>{% trans "Add it!" %}</a>{% endif %}
  {% else %}
   {{ plant.description }}
  {% endif %}

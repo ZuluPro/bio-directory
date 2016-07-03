@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<h3>{% trans "Growth" %}</h3>
+<p>
+ {% if not plant.growth_description %}
+  {% trans "No provided description" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_growth_description"/>{% trans "Add it!" %}</a>{% endif %}
+ {% else %}
+  {{ plant.growth_description }}
+ {% endif %}
+</p>
+
+<p>
+ {% if not plant.growth_maintenance %}
+  {% trans "No provided maintenance" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_growth_maintenance"/>{% trans "Add it!" %}</a>{% endif %}
+ {% else %}
+  {{ plant.growth_maintenance }}
+ {% endif %}
+</p>

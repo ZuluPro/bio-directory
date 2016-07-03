@@ -1,0 +1,25 @@
+{% load i18n %}
+
+<h3>{% trans "Crop rotation" %}</h3>
+<h4>{% trans "To plant before:" %}</h4>
+{% if plant.before.all.exists %}
+<ul>
+{% for plant_before in plant.before.all %}
+<li><a href="{{ plant_before.get_absolute_url }}">{{ plant_before }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+ <p>{% trans "No provided previous plant" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_before"/>{% trans "Add it!" %}</a>{% endif %}</p>
+{% endif %}
+
+
+<h4>{% trans "To plant after:" %}</h4>
+{% if plant.after.all.exists %}
+<ul>
+{% for plant_after in plant.after.all %}
+<li><a href="{{ plant_after.get_absolute_url }}">{{ plant_after }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+ <p>{% trans "No provided next plant" %}{% if user.is_staff %}, <a href="{{ plant.get_admin_url }}#id_after"/>{% trans "Add it!" %}</a>{% endif %}</p>
+{% endif %}

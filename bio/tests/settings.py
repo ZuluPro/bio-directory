@@ -1,6 +1,7 @@
 import os
 
 DEBUG = True
+TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = '&qaeg(m5s0rpdj-wx@hrc3vpu)v@@n$if67ba-4e9&kk+j$$c+'
 
