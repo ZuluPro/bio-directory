@@ -196,12 +196,13 @@ class Plant(models.Model):
     dislike = models.ManyToManyField('self', blank=True, help_text=_("Plants with bad association"), verbose_name=_("bad with"))
 
     environment_description = models.TextField(blank=True, null=True, help_text=_("What is the best environment."), verbose_name=_("environment description"))
-    temp_min = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("minimum temperature"))
-    temp_optimal_day = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal day temperature"))
-    temp_optimal_night = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal ngiht temperature"))
-    temp_max = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("maximum temperature"))
+    temp_min = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("minimum temperature"))
+    temp_optimal_day = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal day temperature"))
+    temp_optimal_night = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("optimal ngiht temperature"))
+    temp_max = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_("maximum temperature"))
     humidity_min = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("minimum humidity"))
     humidity_max = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("maximum humidity"))
+    density = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In unit by m2."), verbose_name=_("optimal density"))
 
     exposition = models.CharField(choices=EXPOSITIONS, max_length=15, blank=True, null=True, verbose_name=_("exposition"))
     exposition_time = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In hours"), verbose_name=_("exposition time"))
@@ -218,6 +219,7 @@ class Plant(models.Model):
 
     food = models.BooleanField(verbose_name=_("is food"))
     toxic = models.BooleanField(verbose_name=_("is toxic"))
+    green_manure = models.BooleanField(verbose_name=_("is green manure"))
 
     class Meta:
         app_label = 'bio'
