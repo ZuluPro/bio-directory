@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.admin',
     'bio',
+    'bio.items',
 ]
 
 MIDDLEWARE_CLASSES = (
