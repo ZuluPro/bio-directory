@@ -23,7 +23,7 @@ class PlantItemAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': [
-                'type',
+                ('type', 'stage'),
                 ('seedling_area', 'seedling_date'),
                 ('planting_area', 'planting_date'),
                 'blossom_start_date',

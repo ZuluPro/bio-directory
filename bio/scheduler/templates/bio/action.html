@@ -1,0 +1,36 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Actions" %} - {{ action }}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+   <h1>{{ action }}</h1>
+ </div>
+ 
+ <div id="info">
+  {% if action.plants.exists %}
+   <p><b>{% trans "Plants" %}</b>:</p>
+   <ul>
+    {% for plant in action.plants.all %}
+    <li><a href="{{ plant.get_absolute_url }}">{{ plant }}</a></li>
+    {% endfor %}
+   </ul>
+  {% endif %}
+
+  {% if action.areas.exists %}
+   <p><b>{% trans "Plants" %}</b>:</p>
+   <ul>
+    {% for area in action.areas.all %}
+    <li><a href="{{ area.get_absolute_url }}">{{ area }}</a></li>
+    {% endfor %}
+   </ul>
+  {% endif %}
+
+  <p>{{ action.description }}</p>
+  <br>
+
+  <p><a href="{% url "actions" %}">{% trans "Go back to directory" %}</a></p>
+ </div>
+{% endblock bio_content %}
+

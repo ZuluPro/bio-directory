@@ -1,0 +1,22 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Plants inventory" %} - {{ plant }}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+   <h1>{{ plant }}</h1>
+ </div>
+ 
+ <div id="info">
+  <p><b>{% trans "Stage" %}</b>: {{ plant.get_stage_display }}</p>
+  <p><b>{% trans "Seedling" %}</b>: {% blocktrans with area=plant.seedling_area date=plant.seedling_date %}{{ date }} in {{ area }}{% endblocktrans %}</p>
+  <p><b>{% trans "Planting" %}</b>: {% blocktrans with area=plant.planting_area date=plant.planting_date %}{{ date }} in {{ area }}{% endblocktrans %}</p>
+  <p><b>{% trans "Blossom" %}</b>: {% blocktrans with date=plant.blossom_start_date %}Began {{ date }}{% endblocktrans %}</p>
+  <p><b>{% trans "Harvest" %}</b>: {% blocktrans with date=plant.harvest_start_date %}Began {{ date }}{% endblocktrans %}</p>
+  <p><b>{% trans "Death" %}</b>: {{ plant.death_date}}</p>
+  <br>
+
+  <p><a href="{% url "plantitems" %}">{% trans "Go back to directory" %}</a></p>
+ </div>
+{% endblock bio_content %}

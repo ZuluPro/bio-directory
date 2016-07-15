@@ -217,9 +217,9 @@ class Plant(models.Model):
     before = models.ManyToManyField('self', blank=True, help_text=_("What to plant before this plant."), verbose_name=_("plant before"))
     after = models.ManyToManyField('self', blank=True, help_text=_("What to plant after this plant"), verbose_name=_("plant after"))
 
-    food = models.BooleanField(verbose_name=_("is food"))
+    food = models.BooleanField(default=True, verbose_name=_("is food"))
     toxic = models.BooleanField(verbose_name=_("is toxic"))
-    green_manure = models.BooleanField(verbose_name=_("is green manure"))
+    green_manure = models.BooleanField(default=False, verbose_name=_("is green manure"))
 
     class Meta:
         app_label = 'bio'

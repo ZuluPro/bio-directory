@@ -1,0 +1,19 @@
+{% extends "bio/base.html" %}
+{% load i18n scheduletags %}
+
+{% block title %}{% trans "Calendar " %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% trans "Calendar" %}<h1>
+ </div>
+ <div id="info">
+  <p><a href="{% url "month_calendar" calendar_slug="bio" %}">{% trans "See full calendar" %}</a></p>
+  <ul>
+   {% for action in objects %}
+   <li>{{ action.start|time:"H:i" }} <a href="{{ action.event.get_absolute_url }}">{{ action.title }}</li>
+   {% endfor %}
+  </ul>
+ </div>
+ <p><a href="{% url "directories" %}">Go back to all directories</a></p>
+{% endblock bio_content %}

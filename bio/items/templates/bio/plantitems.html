@@ -1,0 +1,26 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% blocktrans with name=meta.verbose_name_plural|capfirst %}{{ name }} directory{% endblocktrans %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% blocktrans with name=meta.verbose_name_plural|capfirst %}{{ name }} directory{% endblocktrans %}
+  </h1>
+ </div>
+ <div id="info">
+  <ul>
+  {% for obj in objects %}
+   {% ifchanged obj.type %}
+    </li>
+   {% endifchanged %}
+   {% ifchanged obj.type %}
+    <li>
+     <h3>{{ obj }}</h3>
+   {% endifchanged %}
+   <a href="{{ obj.get_absolute_url }}">{{ forloop.counter }}</a>
+  {% endfor %}
+  </ul>
+  <p><a href="{% url "directories" %}">Go back to all directories</a></p>
+ </div>
+{% endblock bio_content %}

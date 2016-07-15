@@ -26,8 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.admin',
+    'schedule',
     'bio',
     'bio.items',
+    'bio.scheduler',
 ]
 
 MIDDLEWARE_CLASSES = (
