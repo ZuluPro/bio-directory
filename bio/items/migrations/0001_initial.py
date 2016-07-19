@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bio', '0003_auto_20160703_0049'),
+        ('bio', '0004_auto_20160704_1419'),
     ]
 
     operations = [
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('morning_temp', models.PositiveSmallIntegerField(help_text='In \xb0C.', null=True, verbose_name='morning temperature', blank=True)),
                 ('day_temp', models.PositiveSmallIntegerField(help_text='In \xb0C.', null=True, verbose_name='day temperature', blank=True)),
                 ('night_temp', models.PositiveSmallIntegerField(help_text='In \xb0C.', null=True, verbose_name='night temperature', blank=True)),
-                ('morning_humidity', models.PositiveSmallIntegerField(help_text='In %.', null=True, verbose_name='day humidity', blank=True)),
+                ('morning_humidity', models.PositiveSmallIntegerField(help_text='In %.', null=True, verbose_name='morning humidity', blank=True)),
                 ('day_humidity', models.PositiveSmallIntegerField(help_text='In %.', null=True, verbose_name='day humidity', blank=True)),
                 ('night_humidity', models.PositiveSmallIntegerField(help_text='In %.', null=True, verbose_name='night humidity', blank=True)),
                 ('morning_exposition', models.CharField(blank=True, max_length=15, null=True, verbose_name='morning exposition', choices=[('full_sunlight', 'full sunlight'), ('partial shade', 'partial shade'), ('shade', 'shade')])),
@@ -47,11 +47,32 @@ class Migration(migrations.Migration):
                 ('death_date', models.DateField(help_text='When it is considered as dead', null=True, verbose_name='death date', blank=True)),
                 ('planting_area', models.ForeignKey(related_name='planted', blank=True, to='bio_items.Area', help_text='Where it has been planted', null=True, verbose_name='planting area')),
                 ('seedling_area', models.ForeignKey(related_name='sown', blank=True, to='bio_items.Area', help_text='Where it has been sown', null=True, verbose_name='seedling area')),
-                ('type', models.ForeignKey(to='bio.Plant')),
             ],
             options={
                 'verbose_name': 'plant',
                 'verbose_name_plural': 'plants',
             },
+        ),
+        migrations.CreateModel(
+            name='PlantSet',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('comment', models.TextField(help_text='Comment about this set', null=True, verbose_name='comment', blank=True)),
+                ('active', models.BooleanField(default=True, verbose_name='active')),
+            ],
+            options={
+                'verbose_name': 'plant set',
+                'verbose_name_plural': 'plant set',
+            },
+        ),
+        migrations.AddField(
+            model_name='plantitem',
+            name='set',
+            field=models.ForeignKey(blank=True, to='bio_items.PlantSet', help_text='Which is the set of this plant', null=True, verbose_name='set'),
+        ),
+        migrations.AddField(
+            model_name='plantitem',
+            name='type',
+            field=models.ForeignKey(to='bio.Plant'),
         ),
     ]

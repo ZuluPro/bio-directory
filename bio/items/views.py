@@ -3,15 +3,17 @@ from bio.items import models
 
 
 def plantitems(request):
-    plants = models.PlantItem.objects.order_by('type', 'seedling_date')
+    plantsets = models.PlantSet.objects.order_by('plantitem__seedling_date')
     return render(request, 'bio/plantitems.html', {
-        'meta': plants.model._meta,
-        'objects': plants
+        'meta': models.PlantItem._meta,
+        'plantsets': plantsets
     })
 
 
 def plantitem(request, plant_id):
     plant = get_object_or_404(models.PlantItem.objects.filter(id=plant_id))
+    actions = plant.action_set.all() if hasattr(plant, 'action_set') else []
     return render(request, 'bio/plantitem.html', {
-        'plant': plant
+        'plant': plant,
+        'actions': actions,
     })

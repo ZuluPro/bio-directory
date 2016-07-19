@@ -1,0 +1,49 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }}{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+&rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+&rsaquo; {% blocktrans %}Change multiple plant's {{ field_verbose_name}}{% endblocktrans %}
+</div>
+{% endblock %}
+
+{% block content %}
+    <h2>{% trans "Objects" %}</h2>
+    <ul>
+    {% for plant in queryset %}
+    <li><a href="{{ plant.get_admin_url }}" target="_blank">{{ plant }}</a></li>
+    {% endfor %}
+    </ul>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+     {% trans "Change to:" %}
+     <fieldset class="module aligned">
+        {% for field in form %}
+         <div class="form-row field-{{ field.name }}">
+          <div>
+           <label for="id_{{ field.name }}">{{ field.label }}:</label>
+           {{ field }}
+          </div>
+         </div>
+        {% endfor %}
+     </fieldset>
+     <div>
+      {% for obj in queryset %}
+      <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}" />
+      {% endfor %}
+      <input type="hidden" name="action" value="change_{{ field }}_selected" />
+      <input type="hidden" name="post" value="yes" />
+      <input type="submit" value="{% trans "Yes" %}" />
+      <a href="#" onclick="window.history.back(); return false;" class="button cancel-link">{% trans "No, take me back" %}</a>
+     </div>
+    </form>
+{% endblock %}

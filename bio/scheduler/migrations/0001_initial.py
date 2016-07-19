@@ -7,8 +7,8 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bio_items', '0001_initial'),
         ('schedule', '0002_event_color_event'),
+        ('bio_items', '0001_initial'),
     ]
 
     operations = [

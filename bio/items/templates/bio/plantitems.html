@@ -10,17 +10,17 @@
  </div>
  <div id="info">
   <ul>
-  {% for obj in objects %}
-   {% ifchanged obj.type %}
-    </li>
-   {% endifchanged %}
-   {% ifchanged obj.type %}
-    <li>
-     <h3>{{ obj }}</h3>
-   {% endifchanged %}
-   <a href="{{ obj.get_absolute_url }}">{{ forloop.counter }}</a>
+  {% for set in plantsets %}
+   <li>
+    <h3>{{ set }}</h3>
+    <p>
+    {% for plant in set.plantitem_set.all %}
+    <a href="{{ plant.get_absolute_url }}">{{ forloop.counter }}</a>
+    {% endfor %}
+    </p>
+   </li>
   {% endfor %}
   </ul>
-  <p><a href="{% url "directories" %}">Go back to all directories</a></p>
+  <p><a href="{% url "directories" %}">{% trans "Go back to all directories" %}</a></p>
  </div>
 {% endblock bio_content %}
