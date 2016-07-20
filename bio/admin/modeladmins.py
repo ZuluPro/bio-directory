@@ -20,26 +20,16 @@ class PlantAdmin(admin.ModelAdmin):
         (_('Cultivation'), {
             'fields': (
                 ('seedling_start', 'seedling_end'),
-                'seedling_description',
                 'germination_period',
-
                 ('planting_start', 'planting_end'),
-                'planting_description',
-
                 'growth_period',
-                ('growth_description', 'growth_maintenance'),
-
-                'blossom_period',
-                ('blossom_description', 'blossom_maintenance'),
                 ('harvest_start', 'harvest_end'),
-                'harvest_description',
             )
         }),
         (_('Environment'), {
             'fields': (
                 'environment_description',
-                ('temp_min', 'temp_optimal_night', 'temp_optimal_day', 'temp_max'),
-                ('exposition', 'exposition_time'),
+                ('temp_min', 'temp_max'),
                 ('humidity_min', 'humidity_max'),
                 ('ph_min', 'ph_max'),
                 ('nitrogen', 'phosphorus', 'potassium'),

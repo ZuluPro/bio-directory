@@ -3,7 +3,7 @@ from bio.items import models
 
 
 def plantitems(request):
-    plantsets = models.PlantSet.objects.order_by('plantitem__seedling_date')
+    plantsets = models.PlantSet.objects.filter(active=True)
     return render(request, 'bio/plantitems.html', {
         'meta': models.PlantItem._meta,
         'plantsets': plantsets

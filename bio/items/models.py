@@ -6,25 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.utils.timezone import now
 from bio.models import Plant, EXPOSITIONS
-
-AREA_TYPES = (
-    ('outside', _('outside')),
-    ('inside', _('inside')),
-    ('greenhouse', _('inside'))
-)
-SOIL_TYPES = (
-    ('potting', _('potting soil')),
-    ('clay', _('clay')),
-    ('sand', _('sand')),
-    ('silt', _('silt'))
-)
-PLANT_STAGES = (
-    ('sow', _('sow')),
-    ('germination', _('germination')),
-    ('seedling', _('adult')),
-    ('flowering', _('fruit')),
-    ('dormant', _('dormant'))
-)
+from bio.guide.models import Guide, PLANT_STAGES, AREA_TYPES, SOIL_TYPES
 
 
 @python_2_unicode_compatible
@@ -67,8 +49,11 @@ class PlantSet(models.Model):
         verbose_name_plural = _('plant set')
 
     def __str__(self):
-        sample = self.plantitem_set.first()
-        return '%i %s' % (self.plantitem_set.count(), sample.type)
+        count = self.plantitem_set.count()
+        if count:
+            sample = self.plantitem_set.first()
+            return '%i %s' % (self.plantitem_set.count(), sample.type)
+        return str(_('Empty set'))
 
 
 @python_2_unicode_compatible
@@ -77,14 +62,21 @@ class PlantItem(models.Model):
     stage = models.CharField(max_length=15, choices=PLANT_STAGES, blank=True, null=True, verbose_name=_('stage'))
     set = models.ForeignKey(PlantSet, null=True, blank=True, help_text=_("Which is the set of this plant"), verbose_name=_("set"))
 
-    seedling_area = models.ForeignKey(Area, blank=True, null=True, related_name='sown', help_text=_('Where it has been sown'), verbose_name=_('seedling area'))
+    germination_guide = models.ForeignKey(Guide, blank=True, null=True, related_name='germinated_plant', help_text=_('How to germinate'), verbose_name=_('germination guide'))
+    seedling_area = models.ForeignKey(Area, blank=True, null=True, related_name='seedling', help_text=_('Where it has been sown'), verbose_name=_('seedling area'))
     seedling_date = models.DateField(blank=True, null=True, help_text=_('When the seed has been planted'), verbose_name=_('seedling date'))
 
-    planting_area = models.ForeignKey(Area, blank=True, null=True, related_name='planted', help_text=_('Where it has been planted'), verbose_name=_('planting area'))
-    planting_date = models.DateField(blank=True, null=True, help_text=_('When it has been planted to growth'), verbose_name=_('planting date'))
+    real_leaf_date = models.DateField(blank=True, null=True, help_text=_('When the has its first real leaves'), verbose_name=_('first real leaves date'))
 
+    transplanting_guide = models.ForeignKey(Guide, blank=True, null=True, related_name='transplanted_plant', help_text=_('How do you plant'), verbose_name=_('transplanting guide'))
+    transplanting_area = models.ForeignKey(Area, blank=True, null=True, related_name='planted', help_text=_('Where it has been transplanted'), verbose_name=_('transplanting area'))
+    transplanting_date = models.DateField(blank=True, null=True, help_text=_('When it has been transplanted for real growth'), verbose_name=_('transplanting date'))
+
+    blossom_guide = models.ForeignKey(Guide, blank=True, null=True, related_name='plant_blossom', help_text=_('How take care of blossom'), verbose_name=_('blossom guide'))
     blossom_start_date = models.DateField(blank=True, null=True, help_text=_('When it has its first flower'), verbose_name=_('blossom date'))
+
     harvest_start_date = models.DateField(blank=True, null=True, help_text=_('When it has its usable element'), verbose_name=_('harvest date'))
+
     death_date = models.DateField(blank=True, null=True, help_text=_('When it is considered as dead'), verbose_name=_('death date'))
 
     class Meta:
@@ -95,7 +87,7 @@ class PlantItem(models.Model):
     def __str__(self):
         if self.blossom_start_date:
             return '%s %s' % (self.type, self.get_blossom_age())
-        if self.planting_date:
+        if self.transplanting_date:
             return '%s %s' % (self.type, self.get_growth_age())
         if self.seedling_date:
             return '%s %s' % (self.type, self.get_seedling_age())
@@ -124,3 +116,14 @@ class PlantItem(models.Model):
 
     def get_blossom_age(self):
         return _('B+%(days)i' % {'days': self._get_day_delta(self.blossom_start_date)})
+
+    def get_current_guide(self):
+        if self.blossom_start_date:
+            return self.blossom_guide
+        if self.transplanting_date:
+            return self.transplanting_guide
+        if self.seedling_date:
+            return self.germination_guide
+        return None
+
+    guide = property(get_current_guide)

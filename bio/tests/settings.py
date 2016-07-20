@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'schedule',
     'bio',
+    'bio.guide',
     'bio.items',
     'bio.scheduler',
 ]

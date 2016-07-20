@@ -10,8 +10,8 @@
  </div>
  <div id="info">
   <ul>
-  {% for obj in objects %}
-  <li><h3><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></h3></li>
+  {% for guide in guides %}
+  <li><h3><a href="{{ guide.get_absolute_url }}">{{ guide }}</a></h3></li>
   {% endfor %}
   </ul>
   <p><a href="{% url "directories" %}">{% trans "Go back to all directories" %}</a></p>

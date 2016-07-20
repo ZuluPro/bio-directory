@@ -1,0 +1,48 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Guide directory" %} - {{ guide.name }}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+   <h1>{{ guide.name }}</h1>
+   {% for illustration in guide.illustrations.all %}
+   <img src="{{ illustration.image.url }}" height="100px"/>
+   {% endfor %}
+ </div>
+ 
+ <div id="info">
+  <p>{{ guide.description }}</p>
+  <br>
+
+  <h3>{% trans "Environment" %}</h3>
+  <p>
+  <b>{% trans "Area" %}</b>:
+  {% if guide.area_type %}{{ guide.get_area_type_display }}{% endif %}
+  {% if guide.soil_type %}in {{ guide.get_soil_type_display }}{% endif %}
+  </p>
+
+  {% if guide.exposition_time %}
+   {% blocktrans with exposition_time=guide.exposition_time %}
+    {{ exposition_time }} hours
+   {% endblocktrans %}
+   {% if guide.exposition %} of {% endif %}
+  {% endif %}
+  {% if guide.exposition %}{{ guide.get_exposition_display }}{% endif %}
+
+  <p>
+  <b>{% trans "Temperatures" %}</b>:
+  {% if guide.temperature_min %}{{ guide.temperature_min }}%{% endif %}
+  {% if guide.temperature_max %}{{ guide.temperature_max }}%{% endif %}
+  </p>
+
+  <p>
+  <b>{% trans "Humidity" %}</b>:
+  {% if guide.humidity_min %}{{ guide.humidity_min }}%{% endif %}
+  {% if guide.humidity_max %}{{ guide.humidity_max }}%{% endif %}
+  </p>
+ 
+  <br>
+  <p><a href="{% url "guides" %}">{% trans "Go back to directory" %}</a></p>
+ </div>
+{% endblock bio_content %}
