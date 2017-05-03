@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.views.generic import View, TemplateView
@@ -119,6 +121,7 @@ class PlantView(DetailView):
         context = super(PlantView, self).get_context_data(**kwargs)
         context['unknown_fields'] = [self.object._meta.get_field(f)
                 for f in utils.get_plant_unknown_fields(self.object)][:5]
+        random.shuffle(context['unknown_fields'])
         return context
 
 

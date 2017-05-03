@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-02 08:37-0500\n"
+"POT-Creation-Date: 2017-05-03 09:18-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -471,27 +471,27 @@ msgstr "date de floraison"
 
 #: items/models.py:78
 msgid "When it has its usable element"
-msgstr ""
+msgstr "Quand il/elle a ses éléments utilisables."
 
 #: items/models.py:78
 msgid "harvest date"
-msgstr ""
+msgstr "date de récolte"
 
 #: items/models.py:80
 msgid "When it is considered as dead"
-msgstr ""
+msgstr "Quand elle est considérée comme morte"
 
 #: items/models.py:80
 msgid "death date"
-msgstr ""
+msgstr "date de décès"
 
 #: items/models.py:84 models/plant.py:132
 msgid "plant"
-msgstr ""
+msgstr "plante"
 
 #: items/models.py:85 models/plant.py:133 scheduler/models.py:26
 msgid "plants"
-msgstr ""
+msgstr "plantes"
 
 #: items/models.py:112
 #, python-format
@@ -501,16 +501,16 @@ msgstr ""
 #: items/models.py:115
 #, python-format
 msgid "G+%(days)i"
-msgstr ""
+msgstr "C+%(days)i"
 
 #: items/models.py:118
 #, python-format
 msgid "B+%(days)i"
-msgstr ""
+msgstr "F+%(days)i"
 
 #: items/templates/bio/admin/change_field_selected.html:13
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 #: items/templates/bio/admin/change_field_selected.html:16
 #, python-format
@@ -1051,7 +1051,7 @@ msgstr "Plantes"
 
 #: scheduler/templates/bio/actions.html:4
 msgid "Calendar "
-msgstr "Calendrier"
+msgstr "Calendrier "
 
 #: scheduler/templates/bio/actions.html:8
 msgid "Calendar"
@@ -1124,19 +1124,19 @@ msgstr "Pas de description fournie"
 
 #: templates/bio/_plant_blossom.html:26 templates/bio/_plant_growth.html:14
 msgid "No provided maintenance"
-msgstr ""
+msgstr "Pas de maintenance fournie"
 
 #: templates/bio/_plant_description.html:4
 msgid "Lifecycle:"
-msgstr "Cycle de vie"
+msgstr "Cycle de vie:"
 
 #: templates/bio/_plant_description.html:8
 msgid "No provided lifecycle"
-msgstr ""
+msgstr "Pas de cycle de vie founi"
 
 #: templates/bio/_plant_environment.html:7
 msgid "No provided environment description"
-msgstr ""
+msgstr "Pas de description de l'environment founie"
 
 #: templates/bio/_plant_environment.html:12
 msgid "Exposition:"
@@ -1145,7 +1145,7 @@ msgstr "Exposition:"
 #: templates/bio/_plant_environment.html:14
 #, python-format
 msgid "%(exposition)s during %(exposition_time)s hours"
-msgstr ""
+msgstr "%(exposition)s pendant %(exposition_time)s heures"
 
 #: templates/bio/_plant_environment.html:16
 #, python-format
@@ -1159,11 +1159,11 @@ msgstr "Pendant %(exposition_time)s heures"
 
 #: templates/bio/_plant_environment.html:20
 msgid "No exposition provided"
-msgstr ""
+msgstr "Pas d'exposition founie"
 
 #: templates/bio/_plant_environment.html:25
 msgid "Optimal temperatures:"
-msgstr ""
+msgstr "Températures optimale"
 
 #: templates/bio/_plant_environment.html:27
 #, python-format
@@ -1286,6 +1286,8 @@ msgid ""
 " From %(start)s to %(end)s\n"
 " "
 msgstr ""
+"\n"
+"De %(start)s à %(end)s"
 
 #: templates/bio/_plant_harvest.html:17 templates/bio/_plant_planting.html:18
 #: templates/bio/_plant_seedling.html:31
@@ -1295,6 +1297,8 @@ msgid ""
 " From %(start)s\n"
 " "
 msgstr ""
+"\n"
+"De %(start)s"
 
 #: templates/bio/_plant_harvest.html:21 templates/bio/_plant_planting.html:22
 #: templates/bio/_plant_seedling.html:35
@@ -1304,6 +1308,8 @@ msgid ""
 " Before %(end)s\n"
 " "
 msgstr ""
+"\n"
+"Before %(end)s"
 
 #: templates/bio/_plant_harvest.html:25
 msgid "No provided harvest dates"
@@ -1389,24 +1395,24 @@ msgstr ""
 
 #: templates/bio/plant.html:4
 msgid "Plants directory"
-msgstr ""
+msgstr "Répertoire de plante"
 
 #: templates/bio/plant.html:12
 msgid "No illustration"
-msgstr ""
+msgstr "Pas d'illustration"
 
 #: templates/bio/plant.html:20
 msgid "Cultivation"
-msgstr ""
+msgstr "Culture"
 
 #: templates/bio/plant.html:37
 msgid "Is toxic:"
-msgstr ""
+msgstr "Est toxique"
 
 #: templates/bio/plant.html:38
 msgid "Is food:"
-msgstr ""
+msgstr "Est comestible"
 
 #: templates/bio/plant.html:41
 msgid "Diseases"
-msgstr ""
+msgstr "Maladies"

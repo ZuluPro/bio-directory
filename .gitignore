@@ -46,7 +46,6 @@ tests/media/
 coverage_html_report/
 
 # Translations
-*.mo
 *.pot
 
 # Django stuff:
