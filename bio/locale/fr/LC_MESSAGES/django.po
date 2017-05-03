@@ -1,0 +1,1412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-02 08:37-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/forms.py:12
+msgid "Images"
+msgstr "Images"
+
+#: admin/forms.py:13 templates/bio/_plant_pest.html.py:3
+#: templates/bio/directories.html:14
+msgid "Pests"
+msgstr "Parasites"
+
+#: admin/forms.py:14 templates/bio/_plant_pathology.html.py:3
+#: templates/bio/directories.html:13
+msgid "Pathologies"
+msgstr "Pathologies"
+
+#: admin/forms.py:15 templates/bio/_plant_affinity.html.py:4
+msgid "Like"
+msgstr "Aime"
+
+#: admin/forms.py:16 templates/bio/_plant_affinity.html.py:15
+msgid "Dislike"
+msgstr "Aime pas"
+
+#: admin/forms.py:17
+msgid "Plant before"
+msgstr "Planter avant"
+
+#: admin/forms.py:18
+msgid "Plant after"
+msgstr "Planter après"
+
+#: admin/modeladmins.py:11 admin/modeladmins.py:79
+msgid "Informations"
+msgstr "Informations"
+
+#: admin/modeladmins.py:23
+msgid "Morphology"
+msgstr "Morphologie"
+
+#: admin/modeladmins.py:33
+msgid "Reproduction"
+msgstr "Reproduction"
+
+#: admin/modeladmins.py:40
+msgid "Germination"
+msgstr "Germination"
+
+#: admin/modeladmins.py:48 guide/templates/bio/guide.html.py:18
+#: templates/bio/plant.html:28
+msgid "Environment"
+msgstr "Environement"
+
+#: admin/modeladmins.py:60
+msgid "Culture"
+msgstr "Culture"
+
+#: forms.py:13
+msgid "e.g.: A flowering tomato"
+msgstr "exemple: Une tomate en fleur"
+
+#: forms.py:18
+msgid "e.g.: Tomato will pass from green to red"
+msgstr "exemple: La tomate passe du vert au rouge"
+
+#: guide/apps.py:12
+msgid "Bio guide"
+msgstr "Guide bio"
+
+#: guide/models.py:9
+msgid "outside"
+msgstr "à l'extérieur"
+
+#: guide/models.py:10
+msgid "inside"
+msgstr "à l'intérieur"
+
+#: guide/models.py:11
+msgid "greenhouse"
+msgstr "serre"
+
+#: guide/models.py:14
+msgid "potting soil"
+msgstr "terreau"
+
+#: guide/models.py:15
+msgid "clay"
+msgstr "argile"
+
+#: guide/models.py:16
+msgid "sand"
+msgstr "sable"
+
+#: guide/models.py:17
+msgid "silt"
+msgstr "limon"
+
+#: guide/models.py:20
+msgid "sow"
+msgstr "semis"
+
+#: guide/models.py:21
+msgid "germination"
+msgstr "germination"
+
+#: guide/models.py:22
+msgid "juvenile"
+msgstr "juvénile"
+
+#: guide/models.py:23
+msgid "adult"
+msgstr "adulte"
+
+#: guide/models.py:24
+msgid "blossom"
+msgstr "floraison"
+
+#: guide/models.py:25
+msgid "fruit"
+msgstr "fruit"
+
+#: guide/models.py:26
+msgid "dormant"
+msgstr "dormance"
+
+#: guide/models.py:33 models/plant.py:38 scheduler/models.py:11
+msgid "name"
+msgstr "nom"
+
+#: guide/models.py:34 items/models.py:62
+msgid "stage"
+msgstr "stade"
+
+#: guide/models.py:35 models/companion.py:12 models/companion.py:18
+#: models/companion.py:24 models/plant.py:41 scheduler/models.py:12
+msgid "description"
+msgstr "description"
+
+#: guide/models.py:40 items/models.py:15 scheduler/models.py:25
+msgid "type"
+msgstr "type"
+
+#: guide/models.py:41 items/models.py:16
+msgid "soil type"
+msgstr "type de substrat"
+
+#: guide/models.py:43
+msgid "exposition"
+msgstr "exposition"
+
+#: guide/models.py:44 items/models.py:30
+msgid "In hours"
+msgstr "En heures"
+
+#: guide/models.py:44 items/models.py:30
+msgid "exposition time"
+msgstr "temps d'exposition"
+
+#: guide/models.py:46 guide/models.py:47 items/models.py:24 items/models.py:25
+#: items/models.py:26 models/plant.py:86 models/plant.py:89 models/plant.py:90
+#: models/plant.py:112 models/plant.py:113
+#, fuzzy
+#| msgid "In %"
+msgid "In %."
+msgstr "En %"
+
+#: guide/models.py:46 models/plant.py:112
+msgid "minimum humidity"
+msgstr "humidité minimum"
+
+#: guide/models.py:47 models/plant.py:113
+msgid "maximum humidity"
+msgstr "humidité maximum"
+
+#: guide/models.py:49 guide/models.py:50 items/models.py:20 items/models.py:21
+#: items/models.py:22 models/plant.py:87 models/plant.py:88
+#: models/plant.py:110 models/plant.py:111
+msgid "In C."
+msgstr "In °C."
+
+#: guide/models.py:49 models/plant.py:110
+msgid "minimum temperature"
+msgstr "température minimum"
+
+#: guide/models.py:50 models/plant.py:111
+msgid "maximum temperature"
+msgstr "température maximum"
+
+#: guide/models.py:54
+msgid "guide"
+msgstr "guide"
+
+#: guide/models.py:55
+msgid "guides"
+msgstr "guides"
+
+#: guide/templates/bio/guide.html:4
+msgid "Guide directory"
+msgstr "Répertoire de guide"
+
+#: guide/templates/bio/guide.html:20
+msgid "Area"
+msgstr "Superficie"
+
+#: guide/templates/bio/guide.html:26
+#, python-format
+msgid ""
+"\n"
+"    %(exposition_time)s hours\n"
+"   "
+msgstr ""
+"\n"
+"%(exposition_time)s heures\n"
+" "
+
+#: guide/templates/bio/guide.html:34
+msgid "Temperatures"
+msgstr "Températures"
+
+#: guide/templates/bio/guide.html:40
+msgid "Humidity"
+msgstr "Humidité"
+
+#: guide/templates/bio/guide.html:46 items/templates/bio/plantitem.html:20
+#: scheduler/templates/bio/action.html:33 templates/bio/pathology.html:22
+#: templates/bio/pest.html.py:39 templates/bio/plant.html:46
+msgid "Go back to directory"
+msgstr "Retourner au répertoire"
+
+#: guide/templates/bio/guides.html:4 guide/templates/bio/guides.html.py:8
+#: items/templates/bio/plantitems.html:4 items/templates/bio/plantitems.html:8
+#: templates/bio/directory.html.py:4 templates/bio/directory.html:8
+#, python-format
+msgid "%(name)s directory"
+msgstr "Répertoire %(name)s"
+
+#: guide/templates/bio/guides.html:17 items/templates/bio/plantitems.html:24
+#: templates/bio/directory.html:17
+msgid "Go back to all directories"
+msgstr "Retourner à tout les répertoires"
+
+#: items/admin/forms.py:8
+msgid "Number of items"
+msgstr "Nombre d'éléments"
+
+#: items/admin/modeladmins.py:7
+msgid "Change plants' stage"
+msgstr "Changer le stade des plantes"
+
+#: items/admin/modeladmins.py:8
+msgid "Change plants' set"
+msgstr "Changer l'ensemble de plantes"
+
+#: items/admin/modeladmins.py:10
+msgid "Change plants' germination guide"
+msgstr "Changer le guide de germination des plantes"
+
+#: items/admin/modeladmins.py:11
+msgid "Change plants' seedling area"
+msgstr "Changer la zone de semis des plantes"
+
+#: items/admin/modeladmins.py:12
+msgid "Change plants' seedling date"
+msgstr "Changer la date de semis des plantes"
+
+#: items/admin/modeladmins.py:13
+msgid "Change plants' first real leaves date"
+msgstr "Changer la date des premières vraies feuilles"
+
+#: items/admin/modeladmins.py:15
+msgid "Change plants' transplanting guide"
+msgstr "Changer la date de repiquage des plantes"
+
+#: items/admin/modeladmins.py:16
+msgid "Change plants' transplanting area"
+msgstr "Changer la zone de repiquage des plantes"
+
+#: items/admin/modeladmins.py:17
+msgid "Change plants' transplanting date"
+msgstr "Changer la date de repiquage des plantes"
+
+#: items/admin/modeladmins.py:19
+msgid "Change plants' blossom guide"
+msgstr "Changer le guide de floraison des plantes"
+
+#: items/admin/modeladmins.py:20
+msgid "Change plants' blossom start date"
+msgstr "Changer la date de début de floraison"
+
+#: items/admin/modeladmins.py:21
+msgid "Change plants' harvest start date"
+msgstr "Changer la date de début de récolte"
+
+#: items/admin/modeladmins.py:23
+msgid "Change plants' death date"
+msgstr "Changer la data de décès"
+
+#: items/apps.py:12
+msgid "Bio items"
+msgstr "Elements bio"
+
+#: items/models.py:17
+msgid "PH"
+msgstr "pH"
+
+#: items/models.py:18
+msgid "In m2."
+msgstr "En m2"
+
+#: items/models.py:18
+msgid "surface"
+msgstr "surface"
+
+#: items/models.py:20
+msgid "morning temperature"
+msgstr "température matinale"
+
+#: items/models.py:21
+msgid "day temperature"
+msgstr "température du jour"
+
+#: items/models.py:22
+msgid "night temperature"
+msgstr "température de nuit"
+
+#: items/models.py:24
+msgid "morning humidity"
+msgstr "humidité du matin"
+
+#: items/models.py:25
+msgid "day humidity"
+msgstr "humidité du jour"
+
+#: items/models.py:26
+msgid "night humidity"
+msgstr "humidité de la nuit"
+
+#: items/models.py:28
+msgid "morning exposition"
+msgstr "exposition du matin"
+
+#: items/models.py:29
+msgid "afternoon exposition"
+msgstr "exposition de l'après-midi"
+
+#: items/models.py:34
+msgid "area"
+msgstr "zone"
+
+#: items/models.py:35 scheduler/models.py:27
+msgid "areas"
+msgstr "zones"
+
+#: items/models.py:43
+msgid "Comment about this set"
+msgstr "Commentaire à propos ce cet ensemble"
+
+#: items/models.py:43
+msgid "comment"
+msgstr "commentaire"
+
+#: items/models.py:44
+msgid "active"
+msgstr "actif"
+
+#: items/models.py:48 items/models.py:49
+msgid "plant set"
+msgstr "ensemble de plante"
+
+#: items/models.py:56
+msgid "Empty set"
+msgstr "Ensemble vide"
+
+#: items/models.py:63
+msgid "Which is the set of this plant"
+msgstr "Quel est l'ensemble de cette plante"
+
+#: items/models.py:63
+msgid "set"
+msgstr "ensemble"
+
+#: items/models.py:65
+msgid "How to germinate"
+msgstr "Comment faire germer"
+
+#: items/models.py:65
+msgid "germination guide"
+msgstr "guide de germination"
+
+#: items/models.py:66
+msgid "Where it has been sown"
+msgstr "Où doit-on semer"
+
+#: items/models.py:66
+msgid "seedling area"
+msgstr "zone de semis"
+
+#: items/models.py:67
+msgid "When the seed has been planted"
+msgstr "Quand la graine doit-elle être planté"
+
+#: items/models.py:67
+msgid "seedling date"
+msgstr "date de semis"
+
+#: items/models.py:69
+msgid "When the has its first real leaves"
+msgstr "Quand elle a ses premières vraies feuilles"
+
+#: items/models.py:69
+msgid "first real leaves date"
+msgstr "date des premières vraies feuilles"
+
+#: items/models.py:71
+msgid "How do you plant"
+msgstr "Comment vous la planter"
+
+#: items/models.py:71
+msgid "transplanting guide"
+msgstr "Guide de repiquage"
+
+#: items/models.py:72
+msgid "Where it has been transplanted"
+msgstr "Où doit-elle être repiqué ?"
+
+#: items/models.py:72
+msgid "transplanting area"
+msgstr "zone de repiquage"
+
+#: items/models.py:73
+msgid "When it has been transplanted for real growth"
+msgstr "Quand elle doit être repiqué pour une réelle croissance"
+
+#: items/models.py:73
+msgid "transplanting date"
+msgstr "date de repiquage"
+
+#: items/models.py:75
+msgid "How take care of blossom"
+msgstr "Comment s'occuper de la floraison"
+
+#: items/models.py:75
+msgid "blossom guide"
+msgstr "guide de floraison"
+
+#: items/models.py:76
+msgid "When it has its first flower"
+msgstr "Quand elle a sa première fleur"
+
+#: items/models.py:76
+msgid "blossom date"
+msgstr "date de floraison"
+
+#: items/models.py:78
+msgid "When it has its usable element"
+msgstr ""
+
+#: items/models.py:78
+msgid "harvest date"
+msgstr ""
+
+#: items/models.py:80
+msgid "When it is considered as dead"
+msgstr ""
+
+#: items/models.py:80
+msgid "death date"
+msgstr ""
+
+#: items/models.py:84 models/plant.py:132
+msgid "plant"
+msgstr ""
+
+#: items/models.py:85 models/plant.py:133 scheduler/models.py:26
+msgid "plants"
+msgstr ""
+
+#: items/models.py:112
+#, python-format
+msgid "S+%(days)i"
+msgstr ""
+
+#: items/models.py:115
+#, python-format
+msgid "G+%(days)i"
+msgstr ""
+
+#: items/models.py:118
+#, python-format
+msgid "B+%(days)i"
+msgstr ""
+
+#: items/templates/bio/admin/change_field_selected.html:13
+msgid "Home"
+msgstr ""
+
+#: items/templates/bio/admin/change_field_selected.html:16
+#, python-format
+msgid "Change multiple plant's %(field_verbose_name)s"
+msgstr "Changer le/la %(field_verbose_name)s de plusieurs plantes"
+
+#: items/templates/bio/admin/change_field_selected.html:21
+msgid "Objects"
+msgstr "Objets"
+
+#: items/templates/bio/admin/change_field_selected.html:28
+msgid "Change to:"
+msgstr "Changer pour"
+
+#: items/templates/bio/admin/change_field_selected.html:45
+msgid "Yes"
+msgstr "Oui"
+
+#: items/templates/bio/admin/change_field_selected.html:46
+msgid "No, take me back"
+msgstr "Non, revenir en arrière"
+
+#: items/templates/bio/plantitem.html:4
+msgid "Plants inventory"
+msgstr "Inventaire de plantes"
+
+#: items/templates/bio/plantitem.html:12
+msgid "Stage"
+msgstr "Stade"
+
+#: items/templates/bio/plantitem.html:13 templates/bio/_plant_seedling.html:3
+msgid "Seedling"
+msgstr "Semis"
+
+#: items/templates/bio/plantitem.html:13 items/templates/bio/plantitem.html:14
+#, python-format
+msgid "%(date)s in %(area)s"
+msgstr "%(date)s dans %(area)s"
+
+#: items/templates/bio/plantitem.html:14 templates/bio/_plant_planting.html:3
+msgid "Planting"
+msgstr "Plantation"
+
+#: items/templates/bio/plantitem.html:15 templates/bio/_plant_blossom.html:3
+msgid "Blossom"
+msgstr "Floraison"
+
+#: items/templates/bio/plantitem.html:15 items/templates/bio/plantitem.html:16
+#, python-format
+msgid "Began %(date)s"
+msgstr "Commencé %(date)s"
+
+#: items/templates/bio/plantitem.html:16 templates/bio/_plant_harvest.html:3
+msgid "Harvest"
+msgstr "Récolte"
+
+#: items/templates/bio/plantitem.html:17
+msgid "Death"
+msgstr "Mort"
+
+#: models/companion.py:11
+msgid "impact"
+msgstr "impact"
+
+#: models/core.py:9
+msgid "January"
+msgstr "Janvier"
+
+#: models/core.py:10
+msgid "Febuary"
+msgstr "Février"
+
+#: models/core.py:11
+msgid "March"
+msgstr "Mars"
+
+#: models/core.py:12
+msgid "April"
+msgstr "Avril"
+
+#: models/core.py:13
+msgid "May"
+msgstr "Mai"
+
+#: models/core.py:14
+msgid "June"
+msgstr "Juin"
+
+#: models/core.py:15
+msgid "July"
+msgstr "Juillet"
+
+#: models/core.py:16
+msgid "August"
+msgstr "Août"
+
+#: models/core.py:17
+msgid "September"
+msgstr "Septembre"
+
+#: models/core.py:18
+msgid "October"
+msgstr "Octobre"
+
+#: models/core.py:19
+msgid "November"
+msgstr "Novembre"
+
+#: models/core.py:20
+msgid "December"
+msgstr "Décembre"
+
+#: models/core.py:33
+msgid "image"
+msgstr "image"
+
+#: models/core.py:34 models/plant.py:44
+msgid "images"
+msgstr "images"
+
+#: models/core.py:57 models/pathologies.py:21
+msgid "pathology"
+msgstr "pathologie"
+
+#: models/core.py:58 models/pathologies.py:22
+msgid "pathologies"
+msgstr "pathologies"
+
+#: models/core.py:85
+msgid "pest"
+msgstr "parasite"
+
+#: models/core.py:86
+msgid "pests"
+msgstr "parasites"
+
+#: models/plant.py:10
+msgid "Perennial"
+msgstr "Vivace"
+
+#: models/plant.py:11
+msgid "Annual"
+msgstr "Annuelle"
+
+#: models/plant.py:12
+msgid "Biennials"
+msgstr "Bi-annuelle"
+
+#: models/plant.py:16 models/plant.py:268
+msgid "full sunlight"
+msgstr "plein soleil"
+
+#: models/plant.py:17
+msgid "partial shade"
+msgstr "mi-ombre"
+
+#: models/plant.py:18 models/plant.py:264
+msgid "shade"
+msgstr "ombre"
+
+#: models/plant.py:21
+msgid "Herbaceous"
+msgstr "Herbacée"
+
+#: models/plant.py:22
+msgid "Bush"
+msgstr "Arbuste"
+
+#: models/plant.py:23
+msgid "Tree"
+msgstr "Arbre"
+
+#: models/plant.py:38
+msgid "Common name, example: tomato."
+msgstr "Nom commun, exemple: tomate"
+
+#: models/plant.py:39
+msgid "latin name"
+msgstr "nom latin"
+
+#: models/plant.py:41
+msgid "How is the plant."
+msgstr "Comment est la plante."
+
+#: models/plant.py:43
+msgid "Image showed for illustrate the plant."
+msgstr "Image affichée pour illustrer la plante"
+
+#: models/plant.py:43
+msgid "illustration"
+msgstr "Illustration"
+
+#: models/plant.py:44
+msgid "Gallery of images representing the plant."
+msgstr "Gallerie d'images représentants la plante"
+
+#: models/plant.py:47
+msgid "lifecycle"
+msgstr "cycle de vie"
+
+#: models/plant.py:48
+msgid "in year"
+msgstr "en années"
+
+#: models/plant.py:48
+msgid "maximum age"
+msgstr "age maximum"
+
+#: models/plant.py:53
+msgid "have dense roots"
+msgstr "a des racines denses"
+
+#: models/plant.py:54
+msgid "have pivot roots"
+msgstr "a une racine pivot"
+
+#: models/plant.py:55
+msgid "have plunging roots"
+msgstr "a des racines plongeantes"
+
+#: models/plant.py:56
+msgid "have oblique pivot roots"
+msgstr "a des racines pivots obliques"
+
+#: models/plant.py:57
+msgid "have creeping roots"
+msgstr "a des racines rampantes"
+
+#: models/plant.py:58
+msgid "in centimeter"
+msgstr "en centimètre"
+
+#: models/plant.py:58
+msgid "root maximum depth"
+msgstr "profondeur maximum des racines"
+
+#: models/plant.py:59
+msgid "in m2"
+msgstr "en m2"
+
+#: models/plant.py:59
+msgid "root maximum area"
+msgstr "superficie maximum des racines"
+
+#: models/plant.py:61
+msgid "is woody"
+msgstr "est ligneuse"
+
+#: models/plant.py:62
+msgid "is herbaceous"
+msgstr "est herbacée"
+
+#: models/plant.py:63
+msgid "have deciduous leaf"
+msgstr "a des racines caduques"
+
+#: models/plant.py:64
+msgid "morphology"
+msgstr "morphologie"
+
+#: models/plant.py:66
+msgid "is transplantable"
+msgstr "est greffable"
+
+#: models/plant.py:69 models/plant.py:279
+msgid "is stoloniferous"
+msgstr "est stolonnifère"
+
+#: models/plant.py:70
+msgid "support cutting"
+msgstr "supporte les boutures"
+
+#: models/plant.py:72
+msgid "is angiosperma"
+msgstr "est angiosperme"
+
+#: models/plant.py:73
+msgid "is monoecious"
+msgstr "est monoïque"
+
+#: models/plant.py:74
+msgid "is dioecious"
+msgstr "est dioïque"
+
+#: models/plant.py:75
+msgid "is hermaphrodite"
+msgstr "est hermaphrodite"
+
+#: models/plant.py:76
+msgid "is autogamous"
+msgstr "est autogame"
+
+#: models/plant.py:77
+msgid "is allogamous"
+msgstr "est allogame"
+
+#: models/plant.py:79
+msgid "is entomogamous"
+msgstr "est entomogame"
+
+#: models/plant.py:80
+msgid "is anemogamous"
+msgstr "est anémogame"
+
+#: models/plant.py:83
+msgid "seed needs stratification"
+msgstr "les graines ont besoin de stratification"
+
+#: models/plant.py:84
+msgid "In month"
+msgstr "En mois"
+
+#: models/plant.py:84
+msgid "seed conservation time"
+msgstr "temps de conservation des graines"
+
+#: models/plant.py:85
+msgid "In days"
+msgstr "En jours"
+
+#: models/plant.py:85
+msgid "germination minimum time"
+msgstr "temps de germination minimum"
+
+#: models/plant.py:86
+msgid "Germination rate"
+msgstr "Taux de germination"
+
+#: models/plant.py:87
+msgid "germination minimum temperature"
+msgstr "température minimum de germination"
+
+#: models/plant.py:88
+msgid "germination maximum temperature"
+msgstr "température maximum de germination"
+
+#: models/plant.py:89
+msgid "germination minimum humidity"
+msgstr "humidité minimum de germination"
+
+#: models/plant.py:90
+msgid "germination maximum humidity"
+msgstr "humidité maximum de germination"
+
+#: models/plant.py:94
+msgid "have determinate growth"
+msgstr "a une croissance déterminée"
+
+#: models/plant.py:95
+msgid "have indeterminate growth"
+msgstr "a une croissance indéterminée"
+
+#: models/plant.py:103
+msgid "is food"
+msgstr "est comestible"
+
+#: models/plant.py:104
+msgid "is toxic"
+msgstr "est toxique"
+
+#: models/plant.py:107
+msgid "What is the best environment."
+msgstr "Quel est le meilleur environement"
+
+#: models/plant.py:107
+msgid "environment description"
+msgstr "description de l'environement"
+
+#: models/plant.py:108
+msgid "What this plant indicate"
+msgstr "Qu'est-ce que la plante indique"
+
+#: models/plant.py:108
+msgid "bio indication"
+msgstr "bio-indication"
+
+#: models/plant.py:115
+msgid "minimum pH"
+msgstr "pH minimum"
+
+#: models/plant.py:116
+msgid "maximum pH"
+msgstr "pH maximum"
+
+#: models/plant.py:118
+msgid "water requirement"
+msgstr "besoin en ear"
+
+#: models/plant.py:119
+msgid "nitrogen requirements"
+msgstr "besoin en azote"
+
+#: models/plant.py:120
+msgid "phosphorus requirements"
+msgstr "besoin en phosphore"
+
+#: models/plant.py:121
+msgid "potassium requirements"
+msgstr "besoins en potasse"
+
+#: models/plant.py:123
+msgid "support full sunlight"
+msgstr "supporte le plein soleil"
+
+#: models/plant.py:124
+msgid "support partial shade"
+msgstr "support la mi-ombre"
+
+#: models/plant.py:125
+msgid "support shade"
+msgstr "supporte l'ombre"
+
+#: models/plant.py:127
+msgid "is green manure"
+msgstr "est un engrais vert"
+
+#: models/plant.py:128
+msgid "capture nitrogen"
+msgstr "fixateur d'azote"
+
+#: models/plant.py:153
+msgid "dense"
+msgstr "dense"
+
+#: models/plant.py:155
+msgid "pivot"
+msgstr "pivot"
+
+#: models/plant.py:157
+msgid "plunging"
+msgstr "plongeante"
+
+#: models/plant.py:159
+msgid "oblique pivot"
+msgstr "pivot olbique"
+
+#: models/plant.py:161
+msgid "creeping"
+msgstr "rampantes"
+
+#: models/plant.py:172
+msgid "herbaceous"
+msgstr "herbacée"
+
+#: models/plant.py:174
+msgid "woody"
+msgstr "ligneuse"
+
+#: models/plant.py:185
+msgid "transplatable"
+msgstr "greffable"
+
+#: models/plant.py:185
+msgid "not transplatable"
+msgstr "non greffable"
+
+#: models/plant.py:190
+msgid "flower"
+msgstr "fleur"
+
+#: models/plant.py:192
+msgid "stoloniferous"
+msgstr "stolonifère"
+
+#: models/plant.py:194
+msgid "cutting"
+msgstr "bouture"
+
+#: models/plant.py:205
+msgid "monoecious"
+msgstr "monoïque"
+
+#: models/plant.py:207
+msgid "dioecious"
+msgstr "dioïque"
+
+#: models/plant.py:210
+msgid "hermaphrodite autogamous"
+msgstr "hermaphrodite autogame"
+
+#: models/plant.py:212
+msgid "hermaphrodite"
+msgstr "hermaphrodite"
+
+#: models/plant.py:223
+#, python-format
+msgid "From %(min)d to %(max)d %(unit)s"
+msgstr "De %(min)d à %(max)d %(unit)s"
+
+#: models/plant.py:225
+#, python-format
+msgid "Minimum %(min)d %(unit)s"
+msgstr "%(min)d %(unit)s minimum"
+
+#: models/plant.py:227
+#, python-format
+msgid "Maximum %(max)d %(unit)s"
+msgstr "%(max)d %(unit)s maximum"
+
+#: models/plant.py:266
+msgid "partial"
+msgstr "partiel"
+
+#: models/plant.py:279
+msgid "isn't stoloniferous"
+msgstr "n'est pas stolonifère"
+
+#: models/validators.py:8
+#, python-format
+msgid "%(value)s is not a pH number"
+msgstr "%(value)s n'est pas un nombre de pH"
+
+#: scheduler/apps.py:12
+msgid "Bio scheduler"
+msgstr ""
+
+#: scheduler/models.py:16
+msgid "action type"
+msgstr "type d'action"
+
+#: scheduler/models.py:17
+msgid "action types"
+msgstr "types d'action"
+
+#: scheduler/models.py:31 scheduler/models.py:32
+msgid "action"
+msgstr "action"
+
+#: scheduler/templates/bio/action.html:4
+msgid "Actions"
+msgstr "Actions"
+
+#: scheduler/templates/bio/action.html:13
+#: scheduler/templates/bio/action.html:22 templates/bio/directories.html:12
+#: templates/bio/home.html.py:12
+msgid "Plants"
+msgstr "Plantes"
+
+#: scheduler/templates/bio/actions.html:4
+msgid "Calendar "
+msgstr "Calendrier"
+
+#: scheduler/templates/bio/actions.html:8
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: scheduler/templates/bio/actions.html:11
+msgid "See full calendar"
+msgstr "Voir le calendrier complet"
+
+#: templates/bio/_plant_affinity.html:2
+msgid "Affinity"
+msgstr "Affinité"
+
+#: templates/bio/_plant_affinity.html:12 templates/bio/_plant_affinity.html:23
+msgid "No provided affinity"
+msgstr "Pas d'affinité fournie"
+
+#: templates/bio/_plant_affinity.html:12 templates/bio/_plant_affinity.html:23
+#: templates/bio/_plant_blossom.html:12 templates/bio/_plant_blossom.html:18
+#: templates/bio/_plant_blossom.html:26
+#: templates/bio/_plant_description.html:8
+#: templates/bio/_plant_description.html:14
+#: templates/bio/_plant_environment.html:7
+#: templates/bio/_plant_environment.html:20
+#: templates/bio/_plant_environment.html:31
+#: templates/bio/_plant_environment.html:38
+#: templates/bio/_plant_environment.html:57
+#: templates/bio/_plant_environment.html:78
+#: templates/bio/_plant_environment.html:99 templates/bio/_plant_growth.html:6
+#: templates/bio/_plant_growth.html:14 templates/bio/_plant_harvest.html:6
+#: templates/bio/_plant_harvest.html:25 templates/bio/_plant_pathology.html:11
+#: templates/bio/_plant_pest.html:11 templates/bio/_plant_planting.html:6
+#: templates/bio/_plant_planting.html:26 templates/bio/_plant_rotation.html:12
+#: templates/bio/_plant_rotation.html:24 templates/bio/_plant_seedling.html:7
+#: templates/bio/_plant_seedling.html:21 templates/bio/_plant_seedling.html:39
+#: templates/bio/pest.html.py:22 templates/bio/pest.html:33
+#: templates/bio/plant.html.py:12
+msgid "Add it!"
+msgstr "Ajoutez-le!"
+
+#: templates/bio/_plant_blossom.html:6 templates/bio/_plant_seedling.html:15
+#, python-format
+msgid ""
+"\n"
+"  %(days)s day\n"
+" "
+msgid_plural ""
+"\n"
+"  %(days)s days\n"
+" "
+msgstr[0] ""
+"\n"
+" %(days)s jours\n"
+" "
+msgstr[1] ""
+"\n"
+" %(days)s jours\n"
+" "
+
+#: templates/bio/_plant_blossom.html:12
+msgid "No provided blossom time"
+msgstr "Pas de temps de récolte fourni"
+
+#: templates/bio/_plant_blossom.html:18
+#: templates/bio/_plant_description.html:14 templates/bio/_plant_growth.html:6
+#: templates/bio/_plant_harvest.html:6 templates/bio/_plant_planting.html:6
+#: templates/bio/_plant_seedling.html:7
+msgid "No provided description"
+msgstr "Pas de description fournie"
+
+#: templates/bio/_plant_blossom.html:26 templates/bio/_plant_growth.html:14
+msgid "No provided maintenance"
+msgstr ""
+
+#: templates/bio/_plant_description.html:4
+msgid "Lifecycle:"
+msgstr "Cycle de vie"
+
+#: templates/bio/_plant_description.html:8
+msgid "No provided lifecycle"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:7
+msgid "No provided environment description"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:12
+msgid "Exposition:"
+msgstr "Exposition:"
+
+#: templates/bio/_plant_environment.html:14
+#, python-format
+msgid "%(exposition)s during %(exposition_time)s hours"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:16
+#, python-format
+msgid "%(exposition)s"
+msgstr "%(exposition)s"
+
+#: templates/bio/_plant_environment.html:18
+#, python-format
+msgid "During %(exposition_time)s hours"
+msgstr "Pendant %(exposition_time)s heures"
+
+#: templates/bio/_plant_environment.html:20
+msgid "No exposition provided"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:25
+msgid "Optimal temperatures:"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:27
+#, python-format
+msgid ""
+"\n"
+"   %(plant.temp_optimal_day)s °C in day\n"
+"  "
+msgstr ""
+"\n"
+" %(plant.temp_optimal_day)s °C de jours\n"
+" "
+
+#: templates/bio/_plant_environment.html:31
+msgid "No provided day temperature"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:34
+#, python-format
+msgid ""
+"\n"
+"   %(plant.temp_optimal_night)s °C in night\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:38
+msgid "No provided night temperature"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:43
+msgid "Supported temperatures:"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:45
+#, python-format
+msgid ""
+"\n"
+"    From %(min)s C° to %(end)s C°\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:49
+#, python-format
+msgid ""
+"\n"
+"    From %(min)s C°\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:53
+#, python-format
+msgid ""
+"\n"
+"    %(max)s C° maximum\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:57
+#: templates/bio/_plant_environment.html:59
+msgid "No provided temperatures"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:64
+msgid "Humidity:"
+msgstr "Humidité:"
+
+#: templates/bio/_plant_environment.html:66
+#: templates/bio/_plant_environment.html:87
+#, python-format
+msgid ""
+"\n"
+"   From %(min)s φ to %(end)s φ\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:70
+#: templates/bio/_plant_environment.html:91
+#, python-format
+msgid ""
+"\n"
+"   From %(min)s φ\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:74
+#: templates/bio/_plant_environment.html:95
+#, python-format
+msgid ""
+"\n"
+"   %(min)s φ maximum\n"
+"  "
+msgstr ""
+
+#: templates/bio/_plant_environment.html:78
+#: templates/bio/_plant_environment.html:80
+msgid "No provided humidity value"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:85
+msgid "PH:"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:99
+#: templates/bio/_plant_environment.html:101
+msgid "No provided PH value"
+msgstr ""
+
+#: templates/bio/_plant_environment.html:107
+msgid "Ideal fertilizer (NPK):"
+msgstr ""
+
+#: templates/bio/_plant_growth.html:3
+msgid "Growth"
+msgstr "Croissance"
+
+#: templates/bio/_plant_harvest.html:13 templates/bio/_plant_planting.html:14
+#: templates/bio/_plant_seedling.html:27
+#, python-format
+msgid ""
+"\n"
+" From %(start)s to %(end)s\n"
+" "
+msgstr ""
+
+#: templates/bio/_plant_harvest.html:17 templates/bio/_plant_planting.html:18
+#: templates/bio/_plant_seedling.html:31
+#, python-format
+msgid ""
+"\n"
+" From %(start)s\n"
+" "
+msgstr ""
+
+#: templates/bio/_plant_harvest.html:21 templates/bio/_plant_planting.html:22
+#: templates/bio/_plant_seedling.html:35
+#, python-format
+msgid ""
+"\n"
+" Before %(end)s\n"
+" "
+msgstr ""
+
+#: templates/bio/_plant_harvest.html:25
+msgid "No provided harvest dates"
+msgstr ""
+
+#: templates/bio/_plant_pathology.html:11
+#: templates/bio/_plant_pathology.html:13
+msgid "No provided pathology"
+msgstr ""
+
+#: templates/bio/_plant_pest.html:11
+msgid "No provided pest"
+msgstr ""
+
+#: templates/bio/_plant_planting.html:26
+msgid "No provided planting dates"
+msgstr ""
+
+#: templates/bio/_plant_rotation.html:3
+msgid "Crop rotation"
+msgstr ""
+
+#: templates/bio/_plant_rotation.html:4
+msgid "To plant before:"
+msgstr ""
+
+#: templates/bio/_plant_rotation.html:12
+msgid "No provided previous plant"
+msgstr ""
+
+#: templates/bio/_plant_rotation.html:16
+msgid "To plant after:"
+msgstr ""
+
+#: templates/bio/_plant_rotation.html:24
+msgid "No provided next plant"
+msgstr ""
+
+#: templates/bio/_plant_seedling.html:21
+msgid "No provided germination time"
+msgstr ""
+
+#: templates/bio/_plant_seedling.html:39
+msgid "No provided seedling dates"
+msgstr ""
+
+#: templates/bio/base.html:6
+msgid "Plant"
+msgstr "Plante"
+
+#: templates/bio/directories.html:4 templates/bio/directories.html.py:8
+#: templates/bio/home.html:4 templates/bio/home.html.py:8
+msgid "Bio directory"
+msgstr ""
+
+#: templates/bio/home.html:13
+msgid "Contribute"
+msgstr "Contribuer"
+
+#: templates/bio/pathology.html:4
+msgid "Pathologies directory"
+msgstr ""
+
+#: templates/bio/pathology.html:17 templates/bio/pest.html.py:17
+msgid "Symptom"
+msgstr ""
+
+#: templates/bio/pathology.html:19 templates/bio/pest.html.py:28
+msgid "Treatment"
+msgstr ""
+
+#: templates/bio/pest.html:4
+msgid "Pests directory"
+msgstr ""
+
+#: templates/bio/pest.html:22 templates/bio/pest.html.py:24
+msgid "No provided symptom"
+msgstr ""
+
+#: templates/bio/pest.html:33 templates/bio/pest.html.py:35
+msgid "No provided treatment"
+msgstr ""
+
+#: templates/bio/plant.html:4
+msgid "Plants directory"
+msgstr ""
+
+#: templates/bio/plant.html:12
+msgid "No illustration"
+msgstr ""
+
+#: templates/bio/plant.html:20
+msgid "Cultivation"
+msgstr ""
+
+#: templates/bio/plant.html:37
+msgid "Is toxic:"
+msgstr ""
+
+#: templates/bio/plant.html:38
+msgid "Is food:"
+msgstr ""
+
+#: templates/bio/plant.html:41
+msgid "Diseases"
+msgstr ""

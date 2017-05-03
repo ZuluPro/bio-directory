@@ -1,0 +1,41 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Contribute" %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% trans "Contribute to Bio directory" %}</h1>
+ </div>
+ <div id="info">
+  <h2>{{ question.validation_question }}</h2>
+  {% if user == question.user and not user.is_staff %}
+  <h3>{% trans "You can't vote to you own question" %}</h3>
+  {% else %}
+    {% if has_voted %}
+    <p>{% trans "You already voted this question" %}</p>
+    {% endif %}
+    <form method="POST">{% csrf_token %}
+     <input type="hidden" name="question_id" value="{{ question.id }}">
+     <input type="submit" name="validate" value="{% trans "Validate" %}"/>
+     <input type="submit" name="neutral" value="{% trans "I don't know" %}"/>
+     <input type="submit" name="decline" value="{% trans "Decline" %}"/>
+
+     <br>
+     <input type="submit" name="skip" value="{% trans "Skip" %}"/>
+     {% if user.is_staff %}
+      <br>
+      {% if question.validated %}
+      <p>{% trans "This response has already been accepted." %}
+      <input type="submit" name="unaccept" value="{% trans "Unaccept" %}"/>
+      {% else %}
+      <input type="submit" name="accept" value="{% trans "Accept" %}"/>
+      {% endif %}
+     {% endif %}
+    </form>
+  {% endif %}
+  <br>
+  <p>{{ question.validated_by.count }}+ / {{ question.declined_by.count }}-</p>
+
+ </div>
+{% endblock bio_content %}

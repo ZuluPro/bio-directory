@@ -1,0 +1,41 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Contribute" %}{% endblock title %}
+
+{% block bio_content %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("select").select2({
+      placeholder: "{% trans "Select or add a new one" %}",
+      maximumSelectionLength: 1,
+      tags: true,
+      language: {
+        noResults: "{% trans "I don't know, you can add it" %}",
+        maximumSelected: ""
+      },
+      escapeMarkup: function (markup) {
+        return markup;
+      }
+  });
+});
+</script>
+
+ <div id="summary">
+  <h1>{% trans "Contribute to Bio directory" %}</h1>
+ </div>
+ <div id="info">
+  <form method="POST">{% csrf_token %}
+  {{ form.errors }}
+  <h2>{% trans "Do you have a plant you want to talk to us about?" %}</h2>
+  <select class="js-example-responsive" multiple="multiple" name="name" style="width: 75%">
+    {% for plant in plants %}
+    <option value="{{ plant.name }}">{{ plant }}</option>
+    {% endfor %}
+  </select>
+  </form>
+ </div>
+{% endblock bio_content %}

@@ -37,7 +37,6 @@ class Guide(models.Model):
     illustration = models.ForeignKey(Image, blank=True, null=True, related_name='guide_illustrations')
     images = models.ManyToManyField(Image, blank=True)
 
-
     area_type = models.CharField(max_length=30, choices=AREA_TYPES, blank=True, null=True, verbose_name=_('type'))
     soil_type = models.CharField(max_length=30, choices=SOIL_TYPES, blank=True, null=True, verbose_name=_('soil type'))
 
@@ -47,8 +46,8 @@ class Guide(models.Model):
     humidity_min = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("minimum humidity"))
     humidity_max = models.PositiveSmallIntegerField(blank=True, null=True, help_text=_("In %."), verbose_name=_("maximum humidity"))
 
-    temperature_min = models.SmallIntegerField(blank=True, null=True, help_text=_('In \xb0C.'), verbose_name=_('minimum temperature'))
-    temperature_max = models.SmallIntegerField(blank=True, null=True, help_text=_('In \xb0C.'), verbose_name=_('maximum temperature'))
+    temperature_min = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_('minimum temperature'))
+    temperature_max = models.SmallIntegerField(blank=True, null=True, help_text=_("In \xb0C."), verbose_name=_('maximum temperature'))
 
     class Meta:
         app_label = 'bio_guide'

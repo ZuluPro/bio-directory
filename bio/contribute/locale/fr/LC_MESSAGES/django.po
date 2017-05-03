@@ -1,0 +1,252 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-02 08:37-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: contribute/forms.py:13
+msgid "Yes"
+msgstr "Oui"
+
+#: contribute/forms.py:14
+msgid "No"
+msgstr "Non"
+
+#: contribute/forms.py:53
+msgid "What are your references ?"
+msgstr "Quelles sont vos références ?"
+
+#: contribute/models.py:92
+msgid "new plant"
+msgstr "nouvelle plante"
+
+#: contribute/models.py:93
+msgid "new plants"
+msgstr "nouveaux plants"
+
+#: contribute/models.py:100
+msgid "Do you know a plant we don't know ?"
+msgstr "Connais-tu une plante qu'on ne connait pas ?"
+
+#: contribute/models.py:104
+#, python-format
+msgid "Does %s is a plant ?"
+msgstr "Est-ce que %s est une plante ?"
+
+#: contribute/models.py:126
+msgid "plant question"
+msgstr "question de plante"
+
+#: contribute/models.py:127
+msgid "plant questions"
+msgstr "questions de plante"
+
+#: contribute/models.py:136
+#, python-format
+msgid "Can you give the %(field)s of a %(plant_name)s"
+msgstr "Peux-tu donner le/la %(field)s d'un(e) %(plant_name)s"
+
+#: contribute/models.py:141
+#, python-format
+msgid "Does the %(plant_name)s %(field)s ?"
+msgstr "Est-ce que le/la %(plant_name)s %(field)s ?"
+
+#: contribute/models.py:146
+#, python-format
+msgid "What is the %(field)s of a %(plant_name)s ?"
+msgstr "Quel(le) est le/la %(field)s d'un(e) %(plant_name)s ?"
+
+#: contribute/models.py:157
+#, python-format
+msgid "Do you agree that %(plant_name)s %(attr_display)s"
+msgstr "Etes-vous d'accord que le/la %(plant_name)s %(attr_display)s"
+
+#: contribute/models.py:162
+#, python-format
+msgid ""
+"Do you agree that the %(field)s of a %(plant_name)s is %(attr_display)s ?"
+msgstr "Etes-vous d'accord que le/la %(field)s de le/la %(plant_name)s est %(attr_display)s ?"
+
+#: contribute/models.py:201
+msgid "plant image"
+msgstr "image de plante"
+
+#: contribute/models.py:202
+msgid "plant images"
+msgstr "images de plante"
+
+#: contribute/models.py:209
+#, python-format
+msgid "Is it a %(plant_name)s ?"
+msgstr "Est-ce un/une M(plant_name)s ?"
+
+#: contribute/templates/bio/contribute/choose_plant.html:4
+#: contribute/templates/bio/contribute/plant.html:4
+#: contribute/templates/bio/contribute/plant_validation.html:4
+#: contribute/templates/bio/contribute/plant_validation_list.html:4
+msgid "Contribute"
+msgstr "Contriuber"
+
+#: contribute/templates/bio/contribute/choose_plant.html:13
+msgid "Select or add a new one"
+msgstr ""
+
+#: contribute/templates/bio/contribute/choose_plant.html:17
+msgid "I don't know, you can add it"
+msgstr ""
+
+#: contribute/templates/bio/contribute/choose_plant.html:28
+#: contribute/templates/bio/contribute/plant.html:8
+#: contribute/templates/bio/contribute/plant_validation.html:8
+#: contribute/templates/bio/contribute/plant_validation_list.html:8
+msgid "Contribute to Bio directory"
+msgstr ""
+
+#: contribute/templates/bio/contribute/choose_plant.html:33
+msgid "Do you have a plant you want to talk to us about?"
+msgstr ""
+
+#: contribute/templates/bio/contribute/home.html:4
+#: contribute/templates/bio/contribute/home.html:8
+msgid "Bio directory"
+msgstr ""
+
+#: contribute/templates/bio/contribute/home.html:12
+msgid "Add informations"
+msgstr ""
+
+#: contribute/templates/bio/contribute/home.html:13
+msgid "Validate informations"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant.html:28
+msgid "Submit"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant.html:29
+#: contribute/templates/bio/contribute/plant_validation.html:25
+msgid "Skip"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:13
+msgid "You can't vote to you own question"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:16
+msgid "You already voted this question"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:20
+msgid "Validate"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:21
+msgid "I don't know"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:22
+msgid "Decline"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:29
+msgid "This response has already been accepted."
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:30
+msgid "Unaccept"
+msgstr ""
+
+#: contribute/templates/bio/contribute/plant_validation.html:32
+msgid "Accept"
+msgstr ""
+
+#: contribute/views.py:82
+#, python-format
+msgid ""
+"%(plant_name)s has already been submitted. You can consult its <a href="
+"\"%(new_plant_url)s\">file</a>."
+msgstr ""
+
+#: contribute/views.py:91
+#, python-format
+msgid ""
+"%(plant_name)s has been added to database. You can consult its <a href="
+"\"%(plant_url)s\">file</a>."
+msgstr ""
+
+#: contribute/views.py:100
+#, python-format
+msgid ""
+"Your plant has been submitted. You can consult your submission <a href="
+"\"%(new_plant_url)s\">here</a>"
+msgstr ""
+
+#: contribute/views.py:138
+#, python-format
+msgid "All data about %(plant)s has been filled!"
+msgstr ""
+
+#: contribute/views.py:217
+#, python-format
+msgid ""
+"Your image has been submitted. Check it <a href=\"%(plant_image_url)s"
+"\">here</a>"
+msgstr ""
+
+#: contribute/views.py:252
+msgid "There's no data to validate"
+msgstr ""
+
+#: contribute/views.py:276 contribute/views.py:354 contribute/views.py:434
+msgid "You can't vote to your own question"
+msgstr ""
+
+#: contribute/views.py:287 contribute/views.py:292 contribute/views.py:365
+#: contribute/views.py:370 contribute/views.py:445 contribute/views.py:450
+msgid "You can't vote"
+msgstr ""
+
+#: contribute/views.py:297
+msgid "This response has been validated"
+msgstr ""
+
+#: contribute/views.py:300 contribute/views.py:306 contribute/views.py:380
+#: contribute/views.py:386 contribute/views.py:461 contribute/views.py:466
+msgid "You can't decide answer validation"
+msgstr ""
+
+#: contribute/views.py:303 contribute/views.py:383
+msgid "This response has been unaccepted"
+msgstr ""
+
+#: contribute/views.py:318
+msgid "There's no new plant to validate"
+msgstr ""
+
+#: contribute/views.py:375
+#, python-format
+msgid "%(plant)s has been added to database."
+msgstr ""
+
+#: contribute/views.py:398
+msgid "There's no image to validate"
+msgstr ""
+
+#: contribute/views.py:456
+#, python-format
+msgid "\"%(image_title)s\" has been added to database."
+msgstr ""

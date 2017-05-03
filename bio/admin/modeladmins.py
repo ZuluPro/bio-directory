@@ -10,20 +10,39 @@ class PlantAdmin(admin.ModelAdmin):
     fieldsets = (
         (_('Informations'), {
             'fields': (
-                ('name', 'latin_name', 'variety'),
+                ('name', 'latin_name',),
                 'description',
                 'lifecycle',
                 ('illustration', 'images'),
-                ('food', 'toxic')
+                ('food', 'toxic'),
+                'max_age',
+                ('green_manure', 'nitrogen_fixing'),
+                'bio_indication',
             )
         }),
-        (_('Cultivation'), {
+        (_('Morphology'), {
             'fields': (
-                ('seedling_start', 'seedling_end'),
-                'germination_period',
-                ('planting_start', 'planting_end'),
-                'growth_period',
-                ('harvest_start', 'harvest_end'),
+                'morphology',
+                'deciduous_leaf',
+                ('root_depth', 'root_area'),
+                ('dense_roots', 'pivot_roots', 'plunging_roots', 'oblique_pivot_roots', 'creeping_roots'),
+                ('woody', 'herbaceous'),
+                'transplantable'
+            )
+        }),
+        (_('Reproduction'), {
+            'fields': (
+                ('angiospermae', 'stoloniferous', 'cutting'),
+                ('monoecious', 'dioecy', 'hermaphrodite'),
+                ('autogamous', 'allogamous'),
+            )
+        }),
+        (_('Germination'), {
+            'fields': (
+                ('seed_need_stratification', 'seed_conservation_time'),
+                ('germination_min_time', 'germination_rate'),
+                ('germination_min_temp', 'germination_max_temp'),
+                ('germination_humidity_min', 'germination_humidity_max'),
             )
         }),
         (_('Environment'), {
@@ -32,14 +51,15 @@ class PlantAdmin(admin.ModelAdmin):
                 ('temp_min', 'temp_max'),
                 ('humidity_min', 'humidity_max'),
                 ('ph_min', 'ph_max'),
+                'water_requirement',
                 ('nitrogen', 'phosphorus', 'potassium'),
-                ('like', 'dislike'),
-                ('after', 'before'),
+                ('exposition_shade', 'exposition_partial', 'exposition_full'),
+
             )
         }),
-        (_('Diseases'), {
+        (_('Culture'), {
             'fields': (
-                ('pathologies', 'pests'),
+                ('determinate_growth', 'indeterminate_growth'),
             )
         }),
     )

@@ -1,0 +1,32 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Contribute" %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% trans "Contribute to Bio directory" %}</h1>
+ </div>
+ <div id="info">
+  <form method="POST">{% csrf_token %}
+  <h2>{{ question.question }}</h2>
+  {% for ex in exclude %}
+  <input type="hidden" name="exclude" value="{{ ex }}">
+  {% endfor %}
+  <input type="hidden" name="plant" value="{{ plant.id }}">
+  <input type="hidden" name="fieldname" value="{{ fieldname }}">
+  {% if form.field.choices %}
+    {% for choice in form.field.choices %}
+      {{ choice.1 }}
+    {% endfor %}
+  {% else %}
+    {% for field in form|slice=":1" %}
+    {{ field }}
+    {% endfor %}
+  {% endif %}
+  {{ form.reference }}
+  <input type="submit" name="submit" value="{% trans "Submit" %}"/>
+  <input type="submit" name="skip" value="{% trans "Skip" %}"/>
+  </form>
+ </div>
+{% endblock bio_content %}

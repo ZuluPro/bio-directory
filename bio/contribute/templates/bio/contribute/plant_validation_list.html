@@ -1,0 +1,19 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Contribute" %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% trans "Contribute to Bio directory" %}</h1>
+ </div>
+ <div id="info">
+  <h2>{{ question.validation_question }}</h2>
+  <ul>
+  {% for q in object_list %}
+  <li><a href="{{ q.get_abosulte_url }}">{{ q.question }}: {{ q.response}}</a></li>
+  {% endfor %}
+  </ul>
+
+ </div>
+{% endblock bio_content %}

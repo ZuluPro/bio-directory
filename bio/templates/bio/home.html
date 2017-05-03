@@ -1,0 +1,16 @@
+{% extends "bio/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Bio directory" %}{% endblock title %}
+
+{% block bio_content %}
+ <div id="summary">
+  <h1>{% trans "Bio directory" %}</h1>
+ </div>
+ <div id="info">
+  <ul>
+   <li><h2><a href="{% url "plants" %}">{% trans "Plants" %}</a></h2></li>
+   <li><h2><a href="{% url "contribute-home" %}">{% trans "Contribute" %}</a></h2></li>
+  </ul>
+ </div>
+{% endblock bio_content %}
