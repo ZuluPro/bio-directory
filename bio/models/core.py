@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.utils.text import slugify
+from bio import utils
 
 
 MONTHS = (
@@ -21,12 +23,19 @@ MONTHS = (
 )
 
 
+def image_upload_to(instance, filename):
+    filetype = filename.split('.')[-1]
+    slug_name = slugify(instance.title)
+    full_path = 'bio/images/%s.%s' % (slug_name, filetype)
+    import ipdb; ipdb.set_trace()
+    return full_path
+
 
 @python_2_unicode_compatible
 class Image(models.Model):
     description = models.TextField(blank=True, null=True)
     title = models.CharField(max_length=100)
-    image = models.ImageField()
+    image = models.ImageField(storage=utils.get_media_storage(), upload_to=image_upload_to)
 
     class Meta:
         app_label = 'bio'

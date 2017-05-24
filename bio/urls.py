@@ -8,7 +8,7 @@ urlpatterns = patterns(
     url(r'^$', views.HomeView.as_view(), name='home'),
 
     url(r'plants/$', views.PlantListView.as_view(), name="plants"),
-    url(r'plants/(?P<plant_id>\d*)/$', 'views.plant', name="plant"),
+    url(r'plants/(?P<pk>\d+)/$', views.PlantView.as_view(), name="plant"),
 
     url(r'contribute/$', contribute_views.HomeView.as_view(), name='contribute-home'),
     url(r'contribute/plant/$', contribute_views.ChoosePlantQuestionView.as_view(), name='contribute-plant'),

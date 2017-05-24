@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.shortcuts import render, get_object_or_404
 
 from bio import models
@@ -44,11 +45,14 @@ def plants(request):
     })
 
 
-def plant(request, plant_id):
-    plant = get_object_or_404(models.Plant.objects.filter(id=plant_id))
-    return render(request, 'bio/plant.html', {
-        'plant': plant
-    })
+class PlantView(DetailView):
+    model = models.Plant
+    template_name = 'bio/plant.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PlantView, self).get_context_data(**kwargs)
+        context['plant'] = self.object
+        return context
 
 
 def pathologies(request):

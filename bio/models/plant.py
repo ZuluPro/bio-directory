@@ -147,6 +147,15 @@ class Plant(models.Model):
         if self.illustration:
             return self.illustration.image.url
 
+    def get_slug(self):
+        slug = self.name.lower().replace(' ', '-').strip()
+        return slug
+
+    def get_tag(self):
+        from bio.models import Tag
+        slug = self.get_slug()
+        return Tag.objects.filter(name=slug).first()
+
     def get_root_types(self):
         root_types = []
         if self.dense_roots:

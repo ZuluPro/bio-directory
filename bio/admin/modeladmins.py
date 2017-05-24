@@ -117,3 +117,7 @@ class PestAdmin(admin.ModelAdmin):
             url=obj.images.first().image.url)
     get_image.short_description = 'Illustration'
     get_image.allow_tags = True
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)

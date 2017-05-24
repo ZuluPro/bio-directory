@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import auth
 
 from bio import models as bio_models
+from bio import utils
 from bio.contribute import signals
 
 
@@ -108,11 +109,13 @@ class NewPlant(BaseQuestion):
         if not bio_models.Plant.objects.filter(name=self.name).exists():
             bio_models.Plant.objects.create(name=self.name)
         signals.accepted_answer.send(None, instance=self, user=self.user)
+        self.save()
 
     def unaccept_response(self, user):
         self.validated = False
         # bio_models.Plant.objects.filter(name=self.name).delete()
         signals.unaccepted_answer.send(None, instance=self, user=self.user)
+        self.save()
 
 
 class PlantQuestion(BaseQuestion):
@@ -179,21 +182,28 @@ class PlantQuestion(BaseQuestion):
 
     def accept_response(self, user):
         self.validated = True
-        setattr(self.plant, self.fieldname, self.response)
+        field = self.plant._meta.get_field(self.fieldname)
+        if isinstance(field, (models.BooleanField, models.NullBooleanField)):
+            value = True if self.response == 'yes' else False
+        else:
+            value = self.response
+        setattr(self.plant, self.fieldname, value)
         self.plant.save()
         signals.accepted_answer.send(None, instance=self, user=self.user)
+        self.save()
 
     def unaccept_response(self, user):
         self.validated = False
         setattr(self.plant, self.fieldname, None)
         self.plant.save()
         signals.unaccepted_answer.send(None, instance=self, user=self.user)
+        self.save()
 
 
 class PlantImage(BaseQuestion):
     plant = models.ForeignKey('bio.Plant')
     title = models.CharField(max_length=100)
-    image = models.ImageField()
+    image = models.ImageField(storage=utils.get_media_storage(), upload_to=bio_models.core.image_upload_to)
     description = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -220,6 +230,7 @@ class PlantImage(BaseQuestion):
             self.plant.illustration = image
             self.plant.save()
         signals.accepted_answer.send(None, instance=self, user=self.user)
+        self.save()
 
     def unaccept_response(self, user):
         self.validated = False
@@ -232,3 +243,4 @@ class PlantImage(BaseQuestion):
                     self.plant.illustration = self.plant.images.first()
                 self.plant.save()
         signals.unaccepted_answer.send(None, instance=self, user=self.user)
+        self.save()
